@@ -51,10 +51,29 @@ have parameter decorate
 this is test
 ```
 
-### 3：类装饰器
+#### 3：类装饰器
 ```python
 class decorate(object):
     def __init__(self, func):
         print("this is a class decorate")
+        self._func = func
         func(*args, **kwargs)
+    def __call__(self, *args, **kwargs):
+        self._func(*args, **kwargs)
 ```
+*调用方式为@decorate, 函数会被传递给__init__方法，返回一个类实例，当实例被调用时，也就是执行__call__方法*
+
+如果类装饰器初始化的时候想初始化一些变量，可以在__init__方法中完成，实例如下：
+```python
+class decorate(object):
+    def __init__(self, name, date):
+        self._name = name
+        self._date = date
+    def __call__(self, func):
+        def wrap(*args, **kwargs):
+            print(self._name, self._date)
+            func(*args, **kwargs)
+        return wrap
+```
+*调用方式为@decorate("test", "2017-04-06"), python解释器会先把参数传给__init__初始化实例，再调用__call__返回装饰后的函数。*
+
