@@ -15,7 +15,6 @@
                 <h1><a href="./">CatsAction blog </a></h1>
                 <nav><ul>
                     <li><a href="./category/ji-zhu-bo-wen.html">技术博文</a></li>
-                    <li><a href="./category/yeah.html">yeah</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
@@ -84,47 +83,33 @@ this is test
 </pre></div>
 
 
-<h3>3：类装饰器</h3>
+<h4>3：类装饰器</h4>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">decorate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;this is a class decorate&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span> <span class="o">=</span> <span class="n">func</span>
         <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>                </article>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+
+<p><em>调用方式为@decorate, 函数会被传递给__init__方法，返回一个类实例，当实例被调用时，也就是执行__call__方法</em></p>
+<p>如果类装饰器初始化的时候想初始化一些变量，可以在__init__方法中完成，实例如下：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">decorate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_date</span> <span class="o">=</span> <span class="n">date</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_date</span><span class="p">)</span>
+            <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrap</span>
+</pre></div>
+
+
+<p><em>调用方式为@decorate("test", "2017-04-06"), python解释器会先把参数传给__init__初始化实例，再调用__call__返回装饰后的函数。</em></p>                </article>
             </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="./my-super-post.html" rel="bookmark"
-                           title="Permalink to My super title">My super title</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-10-03T10:20:00+08:00">
-                Published: 日 03 十月 2010
-        </abbr>
-		<br />
-        <abbr class="modified" title="2010-10-04T18:40:00+08:00">
-                Updated: 一 04 十月 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="./author/alexis-metaireau.html">Alexis Metaireau</a>
-                        <a class="url fn" href="./author/conan-doyle.html">Conan Doyle</a>
-        </address>
-<p>In <a href="./category/yeah.html">yeah</a>.</p>
-<p>tags: <a href="./tag/thats.html">thats</a> <a href="./tag/awesome.html">awesome</a> </p>
-</footer><!-- /.post-info -->                <p class="first last">Short version for index and feeds</p>
-
-                <a class="readmore" href="./my-super-post.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
