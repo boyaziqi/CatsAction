@@ -37,3 +37,6 @@ RELATIVE_URLS = True
 foobar = "范孝大"
 
 LOAD_CONTENT_CACHE = False
+PYGMENTS_RST_OPTIONS = {'classprefix': 'pgcss', 'linenos': 'table'}
+
+THEME = "/Users/fanxu/pelican-themes/gum"
