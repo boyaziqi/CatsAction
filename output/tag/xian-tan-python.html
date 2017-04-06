@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>CatsAction blog - 闲谈，python</title>
+        <link rel="stylesheet" href="../theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="../">CatsAction blog </a></h1>
+                <nav><ul>
+                    <li><a href="../category/ji-zhu-bo-wen.html">技术博文</a></li>
+                    <li><a href="../category/yeah.html">yeah</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../pythonsheng-cheng-qi.html">python生成器</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-04-05T17:50:00+08:00">
+                Published: 三 05 四月 2017
+        </abbr>
+		<br />
+        <abbr class="modified" title="2017-04-06T15:30:00+08:00">
+                Updated: 四 06 四月 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/catsaction.html">CatsAction</a>
+        </address>
+<p>In <a href="../category/ji-zhu-bo-wen.html">技术博文</a>.</p>
+<p>tags: <a href="../tag/xian-tan-python.html">闲谈，python</a> </p>
+</footer><!-- /.post-info --><p>生成器的定义就不冗述了，它可以是函数，也可以是类。可以带参数。接下来分别介绍：</p>
+<h4>1：不带参数的生成器（函数）</h4>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;this is a decorate&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nd">@decorate</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;this is test&quot;</span><span class="p">)</span>
+
+<span class="n">test</span><span class="p">()</span>
+</pre></div>
+
+
+<p><em>注意：调用方式是@decorate，后面不跟括号，加上括号就成调用带参数的生成器了。相当于<code>test = decorate(test)</code>。输出结果为：</em></p>
+<div class="highlight"><pre><span></span>this is a decorate
+this is test
+</pre></div>
+
+
+<h4>2：带参数的生成器（函数）</h4>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/env/bin python</span>
+
+<span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">dec</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+            <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">dec</span>
+
+<span class="nd">@decorate</span><span class="p">(</span><span class="s2">&quot;have parameter decorate&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;this is test&quot;</span><span class="p">)</span>
+
+
+<span class="n">test</span><span class="p">()</span>
+</pre></div>
+
+
+<p>python解释器会自动识别封装，将函数传递给dec。相当于<code>test = decorate("have parameter decorate")(func)</code>.输出结果为：</p>
+<div class="highlight"><pre><span></span>have parameter decorate
+this is test
+</pre></div>
+
+
+<h3>3：类装饰器</h3>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">decorate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;this is a class decorate&quot;</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="http://gz.people.com.cn">人民网贵州频道</a></li>
+                            <li><a href="http://www.gog.cn">多彩贵州</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
