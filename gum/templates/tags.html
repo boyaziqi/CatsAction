@@ -1,12 +1,18 @@
 {% extends "base.html" %}
+{% block title %}{{ SITENAME }} - Tags{% endblock %}
 {% block content %}
+<h4><i class="icon-tags icon-large"></i>Tags for {{ SITENAME }}</h4>
 <ul>
-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
-{% for tag in tag_cloud %}
-<li class="tag-{{ tag.1 }}">
-	<a href="{{ SITEURL }}/{{ tag.0.url }}">
-		<i class="icon-tag icon-large"></i>{{ tag.0|e }}
+{% for tag, articles in tags %}
+<li class="tag-{{ tag }}">
+	<a href="{{ SITEURL }}/{{ tag.url }}">
+		<i class="icon-tag icon-large"></i>{{ tag|e }}
 	</a>
+    <ul>
+        {% for article in articles %}
+            <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
 </li>
 {% endfor %}
 </ul>

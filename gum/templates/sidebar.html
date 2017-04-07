@@ -29,11 +29,11 @@
 {% endif %}
 
 
-<h4>Tags</h4>
+<a href="{{ SITEURL }}/tags.html"><h4>Tags</h4></a>
 {% if tags %}
 	<ul class="blank">
-	{% for tag in tag_cloud %}
-	    <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0|e }}</a></li>
+	{% for tag, _ in tags %}
+	    <li class="tag-{{ tag }}"><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag|e }}</a></li>
 	{% endfor %}
 </ul>
 {% endif %}
