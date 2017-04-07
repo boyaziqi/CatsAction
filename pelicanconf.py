@@ -36,7 +36,6 @@ foobar = "范孝大"
 LOAD_CONTENT_CACHE = False
 PYGMENTS_RST_OPTIONS = {'classprefix': 'pgcss', 'linenos': 'table'}
 DEFAULT_DATE_FORMAT = '%Y-%m-%d  星期%a'
-MENUITEMS = (('README', ''), ('About', 'pages/guan-yu-wo.html'),)
 
 # 以下为本网站自定义设置
 THEME = "gum"

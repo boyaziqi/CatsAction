@@ -3,6 +3,11 @@
 <ul>
 {% for category, articles in categories %}
     <li><a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a></li>
+    <ul>
+        {% for article in articles %}
+            <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
 {% endfor %}
 </ul>
 {% endblock %}
