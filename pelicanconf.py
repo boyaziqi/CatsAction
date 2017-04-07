@@ -26,8 +26,6 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 # Social widget
 SOCIAL = (('github', 'https://github.com/boyaziqi'),)
 
-FOLLOW = (('github', 'https://github.com/boyaziqi'),)
-
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
