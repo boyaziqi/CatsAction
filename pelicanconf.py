@@ -24,8 +24,7 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),)
 
 # Social widget
-SOCIAL = (('人民网贵州频道', 'http://gz.people.com.cn'),
-           ('多彩贵州', 'http://www.gog.cn'),)
+SOCIAL = (('github', 'https://github.com/boyaziqi'),)
 
 FOLLOW = (('github', 'https://github.com/boyaziqi'),)
 
@@ -39,4 +38,9 @@ foobar = "范孝大"
 LOAD_CONTENT_CACHE = False
 PYGMENTS_RST_OPTIONS = {'classprefix': 'pgcss', 'linenos': 'table'}
 
-THEME = "/Users/fanxu/pelican-themes/gum"
+THEME = "gum"
+GITHUB_URL = 'https://github.com/boyaziqi'
+WEIBO_URL = 'http://weibo.com/boyziqi/home?wvr=5'
+LINKEDIN_URL = 'https://www.linkedin.com/feed/'
+GOOGLEPLUS_URL = 'https://plus.google.com/u/0/'
+DISPLAY_PAGES_MENU = True

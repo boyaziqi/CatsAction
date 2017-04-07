@@ -1,46 +1,69 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-        <meta charset="utf-8" />
-        <title>python生成器</title>
-        <link rel="stylesheet" href="./theme/css/main.css" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        <title>python生成器</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="./theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="./theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="./theme/pygment.css" />
+
+        <script src="./theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
 </head>
 
 <body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="./">CatsAction blog </a></h1>
-                <nav><ul>
-                    <li class="active"><a href="./category/ji-zhu-bo-wen.html">技术博文</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="./">CatsAction blog <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="./">Home</a></li>
+
+
+              </ul>
+            </div>
+
 <section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="./pythonsheng-cheng-qi.html" rel="bookmark"
-           title="Permalink to python生成器">python生成器</a></h1>
-    </header>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-04-05T17:50:00+08:00">
-                Published: 三 05 四月 2017
-        </abbr>
-		<br />
-        <abbr class="modified" title="2017-04-06T15:30:00+08:00">
-                Updated: 四 06 四月 2017
-        </abbr>
+   <div class="row">
+        <div class="eleven columns">
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="./author/catsaction.html">CatsAction</a>
-        </address>
-<p>In <a href="./category/ji-zhu-bo-wen.html">技术博文</a>.</p>
-<p>tags: <a href="./tag/xian-tan-python.html">闲谈，python</a> </p>
-</footer><!-- /.post-info -->      <p>生成器的定义就不冗述了，它可以是函数，也可以是类。可以带参数。接下来分别介绍：</p>
+
+            <header>
+              <h2 class="entry-title">
+                <a href="./pythonsheng-cheng-qi.html" rel="bookmark"
+                   title="Permalink to python生成器">python生成器</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-04-05T17:50:00+08:00">
+                三 05 四月 2017
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="./author/catsaction.html"> CatsAction</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>生成器的定义就不冗述了，它可以是函数，也可以是类。可以带参数。接下来分别介绍：
+<br></p>
 <h4>1：不带参数的生成器（函数）</h4>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -62,6 +85,7 @@ this is test
 </pre></div>
 
 
+<p><br></p>
 <h4>2：带参数的生成器（函数）</h4>
 <div class="highlight"><pre><span></span><span class="ch">#!/usr/env/bin python</span>
 
@@ -88,6 +112,7 @@ this is test
 </pre></div>
 
 
+<p><br></p>
 <h4>3：类装饰器</h4>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">decorate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
@@ -114,35 +139,73 @@ this is test
 
 
 <p><em>调用方式为@decorate("test", "2017-04-06"), python解释器会先把参数传给__init__初始化实例，再调用__call__返回装饰后的函数。</em></p>
-    </div><!-- /.entry-content -->
+<p>{cat}fanxu</p>
+            </div><!-- /.entry-content -->
 
-  </article>
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="./category/ji-zhu-bo-wen.html">技术博文</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul class="blank">
+    <li><a href="https://github.com/boyaziqi">github</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
 </section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="http://gz.people.com.cn">人民网贵州频道</a></li>
-                            <li><a href="http://www.gog.cn">多彩贵州</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+       </div><!-- /.row -->
+    </div><!-- /.container -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+       <div class="container.nopad bg">
 
+
+        <footer id="credits" class="row">
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/boyaziqi" target="_blank">Github</a></div></li>
+
+
+
+                <li><div class="btn danger"><a href="https://plus.google.com/u/0/" target="_blank">Google+</a></div></li>
+
+                <li><div class="btn facebook"><a href="http://weibo.com/boyziqi/home?wvr=5" target="_blank">新浪微博</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://www.linkedin.com/feed/" target="_blank">linkedin</a></div></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="./theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="./theme/js/libs/gumby.min.js"></script>
+  <script src="./theme/js/plugins.js"></script>
 </body>
 </html>

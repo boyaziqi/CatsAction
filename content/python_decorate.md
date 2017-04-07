@@ -2,12 +2,13 @@ Title: python生成器
 Date: 2017-04-05 17:50
 Modified: 2017-04-06 15:30
 category:  技术博文
-tags: 闲谈，python
+tags: python
 
 生成器的定义就不冗述了，它可以是函数，也可以是类。可以带参数。接下来分别介绍：
+<br>
 
 #### 1：不带参数的生成器（函数）
-````python
+```python
 def decorate(func):
     def wrapper(*args, **kwargs):
         print("this is a decorate")
@@ -19,12 +20,13 @@ def test():
     print("this is test")
 
 test()
-````
+```
 *注意：调用方式是@decorate，后面不跟括号，加上括号就成调用带参数的生成器了。相当于`test = decorate(test)`。输出结果为：*
 ```
 this is a decorate
 this is test
 ```
+<br>
 
 #### 2：带参数的生成器（函数）
 ```python
@@ -50,6 +52,7 @@ python解释器会自动识别封装，将函数传递给dec。相当于`test = 
 have parameter decorate
 this is test
 ```
+<br>
 
 #### 3：类装饰器
 ```python
@@ -77,3 +80,4 @@ class decorate(object):
 ```
 *调用方式为@decorate("test", "2017-04-06"), python解释器会先把参数传给__init__初始化实例，再调用__call__返回装饰后的函数。*
 
+{cat}fanxu

@@ -118,19 +118,8 @@
 
        <div class="container.nopad bg">
 
-    
+
         <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
           <div class="seven columns">
             <div class="row">
               <ul class="socbtns">
@@ -151,6 +140,13 @@
                 <li><div class="btn danger"><a href="{{ GOOGLEPLUS_URL }}" target="_blank">Google+</a></div></li>
                 {% endif %}
 
+                {% if WEIBO_URL %}
+                <li><div class="btn facebook"><a href="{{ WEIBO_URL }}" target="_blank">新浪微博</a></div></li>
+                {% endif %}
+
+                {% if LINKEDIN_URL %}
+                <li><div class="btn twitter"><a href="{{ LINKEDIN_URL }}" target="_blank">linkedin</a></div></li>
+                {% endif %}
               </ul>
             </div>
           </div>
