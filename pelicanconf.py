@@ -35,7 +35,11 @@ foobar = "范孝大"
 
 LOAD_CONTENT_CACHE = False
 PYGMENTS_RST_OPTIONS = {'classprefix': 'pgcss', 'linenos': 'table'}
+DEFAULT_DATE_FORMAT = '%Y-%m-%d  星期%a'
+TAG_FEED_ATOM = 'feeds/%s.atom.xml'
+MENUITEMS = (('README', ''), ('About', 'pages/guan-yu-wo.html'),)
 
+# 以下为本网站自定义设置
 THEME = "gum"
 GITHUB_URL = 'https://github.com/boyaziqi'
 WEIBO_URL = 'http://weibo.com/boyziqi/home?wvr=5'
