@@ -1,13 +1,13 @@
-Title: python生成器
+Title: python装饰器
 Date: 2017-04-05 17:50
 Modified: 2017-04-06 15:30
 category:  python
-tags: python生成器
+tags: python装饰器
 
-生成器的定义就不冗述了，它可以是函数，也可以是类。可以带参数。接下来分别介绍：
+装饰器的定义就不冗述了，它可以是函数，也可以是类。可以带参数。接下来分别介绍：
 <br>
 
-#### 1：不带参数的生成器（函数）
+#### 1：不带参数的装饰器（函数）
 ```python
 def decorate(func):
     def wrapper(*args, **kwargs):
@@ -28,7 +28,7 @@ this is test
 ```
 <br>
 
-#### 2：带参数的生成器（函数）
+#### 2：带参数的装饰器（函数）
 ```python
 #!/usr/env/bin python
 
