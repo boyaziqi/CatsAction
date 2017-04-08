@@ -1,7 +1,7 @@
 Title: pelican安装与部署
 Date: 2015-01-02
 Modifyed: 2017-04-08 18:11
-category: python, git
+category: python
 tags: pelican, blog, git page
 
 pelican是python编写的一个静态博客生成系统。如果有一定的python基础，部署起来很方便
