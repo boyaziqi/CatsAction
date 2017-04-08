@@ -1,8 +1,8 @@
 Title: python生成器
 Date: 2017-04-05 17:50
 Modified: 2017-04-06 15:30
-category:  技术博文
-tags: python
+category:  python
+tags: python生成器
 
 生成器的定义就不冗述了，它可以是函数，也可以是类。可以带参数。接下来分别介绍：
 <br>
