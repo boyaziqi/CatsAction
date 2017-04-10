@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'CatsAction'
 SITENAME = u'CatsAction blog'
-SITEURL = ''
+SITEURL = 'https://boyaziqi.github.io'
 
 PATH = 'content'
 
@@ -44,3 +44,4 @@ WEIBO_URL = 'http://weibo.com/boyziqi/home?wvr=5'
 LINKEDIN_URL = 'https://www.linkedin.com/feed/'
 GOOGLEPLUS_URL = 'https://plus.google.com/u/0/'
 DISPLAY_PAGES_MENU = True
+DEFAULT_PAGINATION = 5
