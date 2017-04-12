@@ -21,7 +21,8 @@ env.cloudfiles_api_key = 'my_rackspace_api_key'
 env.cloudfiles_container = 'my_cloudfiles_container'
 
 # Github Pages configuration
-env.github_pages_branch = "master"
+env.github_pages_branch = "gh-pages"
+env.github_pages_repository = "user-page"
 
 # Port for `serve`
 PORT = 8000
@@ -89,4 +90,4 @@ def publish():
 def gh_pages():
     """Publish to GitHub Pages"""
     rebuild()
-    local("ghp-import -b {github_pages_branch} {deploy_path} -p".format(**env))
+    local("ghp-import -b {github_pages_branch} -r {github_pages_repository} {deploy_path} -p".format(**env))
