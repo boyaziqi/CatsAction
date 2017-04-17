@@ -42,3 +42,5 @@ class test(object):
     def __new__(cls, x):
         self.x = x
 ```
+
+#### 3：_call__方法
