@@ -99,3 +99,5 @@ ENV/
 #pid file
 pelican.pid
 srv.pid
+
+.DS_Store
