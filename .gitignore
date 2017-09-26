@@ -101,3 +101,4 @@ pelican.pid
 srv.pid
 
 .DS_Store
+package-lock.json
