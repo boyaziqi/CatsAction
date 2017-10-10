@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'CatsAction'
 SITENAME = u'CatsAction blog'
+SITESUBTITLE = u'Self-confidence to change life'
 SITEURL = 'https://boyaziqi.github.io'
 
 PATH = 'content'
