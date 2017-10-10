@@ -28,6 +28,8 @@ DROPBOX_DIR=~/Dropbox/Public/
 GITHUB_PAGES_BRANCH=master
 
 DEBUG ?= 0
+
+ARG?=
 ifeq ($(DEBUG), 1)
 	PELICANOPTS += -D
 endif
@@ -122,3 +124,6 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
+
+pages:
+	git push gh-pages gh-pages:master ${ARG}
