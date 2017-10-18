@@ -2,7 +2,7 @@ Title: python 类的一些特点
 Date: 2015-01-08
 Modified: 2017-04-13 17:32
 category: python
-tags: python 类
+tags: __new__, __init__
 
 本篇关于python类的一些特性总结，会持续更新，如果新式类和旧式类表现有差异，会特别说明。未特别说明，才代表新旧式类表现一致。
 #### 1：python类__init__方法继承特性    

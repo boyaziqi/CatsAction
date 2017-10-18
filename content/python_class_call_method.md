@@ -1,7 +1,7 @@
 Title: python类特殊方法__call__
 Date: 2017-06-06 22:42:00
 category: python
-tags: python类特殊方法
+tags: __call__
 
 当一个类实现了__call__方法时，它的*实例*就是可调用的。即像函数一样使用。
 ```python
@@ -27,4 +27,3 @@ sum: 3
 ####总结:   
 python3中，类是type的实例，用dir(type)查看type的方法时，可以看见type实现了__call__方法，因此在定义类的时候会调用对应的__call__方法，这也是
 元类的工作方式。关于元类，可以查看我的其他文章。同样，函数也实现了__call__方法
-

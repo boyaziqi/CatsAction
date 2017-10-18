@@ -1,6 +1,6 @@
 Title: vim 选项iskeyword
 Date: 2017-06-23
-categiry: vim
+category: vim
 tags: vim选项
 
 之前在用ctags来辅助跳转到python函数的定义处时，我以及生成相应的tags文件，可是在类似self.method_name的语句按<C-T>时却不能正常跳转。查看
