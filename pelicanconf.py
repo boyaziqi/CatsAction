@@ -44,5 +44,6 @@ GITHUB_URL = 'https://github.com/boyaziqi'
 WEIBO_URL = 'http://weibo.com/boyziqi/home?wvr=5'
 LINKEDIN_URL = 'https://www.linkedin.com/feed/'
 GOOGLEPLUS_URL = 'https://plus.google.com/u/0/'
-DISPLAY_PAGES_MENU = True
+DISPLAY_PAGES_ON_MENU = False
+DISPLAY_CATEGORIES_ON_MENU = False
 DEFAULT_PAGINATION = 5

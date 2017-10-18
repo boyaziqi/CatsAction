@@ -213,3 +213,19 @@ ul.blank {
 @media only screen and (max-width: 600px) {
   #banner h1 a {font-size:22px!important; line-height:24px;}
 }
+
+#sidebar h4 {
+    color: #C74350;
+    font-size: 1.429em;
+    margin-top: .75em;
+    margin-bottom: .25em;
+    padding: 0 3px;
+}
+
+#post-list div.entry-content {
+    max-height: 182px;
+    overflow: hidden;
+}
+#post-list div.medium {
+    margin-top: 5px;
+}
