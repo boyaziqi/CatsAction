@@ -17,17 +17,6 @@
 </ul>
 {% endif %}
 
-
-<a href="{{ SITEURL }}/tags.html"><h4>Tags</h4></a>
-{% if tags %}
-	<ul class="blank">
-	{% for tag, _ in tags %}
-	    <li class="tag-{{ tag }}"><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag|e }}</a></li>
-	{% endfor %}
-</ul>
-{% endif %}
-
-
 {% if SOCIAL %}
 <nav class="widget">
   <h4>Social</h4>
