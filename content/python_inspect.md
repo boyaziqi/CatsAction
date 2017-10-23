@@ -6,7 +6,7 @@ tags: inspect
 
 inspect模块可以用来作为python代码自省使用。
 
-它的方法列举如下，想写使用方法见官方文档[inspect](https://docs.python.org/3/library/inspect.html)
+它的方法列举如下，详细使用方法见官方文档[inspect](https://docs.python.org/3/library/inspect.html)
 
 getmembers  
 getmodulename   
