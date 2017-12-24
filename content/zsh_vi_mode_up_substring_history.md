@@ -8,10 +8,11 @@ tags: zsh, oh-my-zsh, history-substring-search
 
  *按方向键的上下键，zsh不能根据输入的字符匹配最近输入的历史命令*
 
- 在网上搜索了下，记录如下
- ```bash
- plugins=(... vi-mode history-substring-search ...)
-# not with
+ 在网上搜索了下解决方法，如下
+```bash
+# 插件应该写成如下
+plugins=(... vi-mode history-substring-search ...)
+# 而不应该写成如下
 plugins=(... history-substring-search vi-mode ...)
 ```
 具体就是history-substring-search插件需要放在vi-mode插件前面，请参考[here](https://github.com/robbyrussell/oh-my-zsh/issues/2735)
