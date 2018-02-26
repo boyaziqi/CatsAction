@@ -1,6 +1,6 @@
 Title: zsh打开vi模式up向上箭头不能按子模式搜索解决方法
 Date: 2017-10-29 00:15:15
-category: :Linux
+category: Linux
 tags: zsh, oh-my-zsh, history-substring-search
 
 由于我习惯在终端下用vim下写代码，因此最近把zsh的模式也改成了vi模式，这样就可以在终端
