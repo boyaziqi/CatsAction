@@ -1,5 +1,5 @@
 Title: 关于pelican 主题gum bug的处理
-Date: 2015-01-05
+Date: 2016-01-05
 Modified: 2017-04-10 18:11
 category: python
 tags: pelican, blog, jinjia2, html

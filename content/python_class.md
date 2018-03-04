@@ -1,5 +1,5 @@
 Title: python 类的一些特点
-Date: 2015-01-08
+Date: 2016-01-03
 Modified: 2017-04-13 17:32
 category: python
 tags: __new__, __init__
@@ -37,10 +37,11 @@ AttributeError: tesst1 instance has no attribute 'test_x'
 ```
 
 #### 2：__new__特性及和__init__的区别
+`__new__`才是 Python 事实上的构造方法，而 `__init__` 更确切的说是初始化方法。`__new__` 会产生一个实例对象，再把这个实例对象传给`__init__` 绑定一些属性。
+因此 `__new__` 是一个类方法，虽然它没有加 classsmethod 装饰器。不过我们大部分时间都不要实现__new__ 方法，因为 Python 解释器会调用 object 对象的 `__new__` 给我们返回一个实例对象。
+
 ```python
 class test(object):
-    def __new__(cls, x):
-        self.x = x
+    def __new__(cls):
+        return object.__new__(cls)
 ```
-
-#### 3：_call__方法

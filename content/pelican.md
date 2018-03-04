@@ -1,5 +1,5 @@
 Title: pelican安装与部署
-Date: 2015-01-02
+Date: 2016-01-02
 Modified: 2017-04-08 18:11
 category: python
 tags: pelican, blog, git page

@@ -1,5 +1,5 @@
 Title: weakref使用与理解
-Date: 2015-08-30
+Date: 2016-04-22
 Modified: 2017-04-14 10:38
 category: python
 tags: weakref, 弱引用
