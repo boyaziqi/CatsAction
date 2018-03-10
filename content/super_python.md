@@ -110,6 +110,7 @@ self is <__main__.D object at 0x10e15e6a0> @A.add
 
 说明：
 
+> - 从输出结果可以看到，super 可以避免重复调用一个方法的问题。
 > - super().add(m) 等于 super(D, self).add(m)，前者是后者的简写形式。
 > - 当 super() 的第二个参数是一个类对象时，需要显示的将实例对象传递给父类的方法。这也是 add1 和 add2 的主要区别。
 >这其实很好理解，因为第二个参数为类对象时，super 返回的是一个非绑定方法，因此需要显示的指定self。
@@ -117,7 +118,7 @@ self is <__main__.D object at 0x10e15e6a0> @A.add
 > 结果可以看出来这点。
 
 ### 一些思考
-1. 如果把 B 中的 `super().add(m)` 删除，`d1.add1(2)` 调用后的 `d1.n` 值是多少呢？
+1. 如果把 B 中的 `super().add(m)` 删除，`d1.add1(2)` 调用后的 `d1.n` 值是多少呢？<br>
 答案：
 ```bash
 self is <__main__.D object at 0x10714b8d0> @D.add1
@@ -127,7 +128,7 @@ self is <__main__.D object at 0x10714b8d0> @B.add
 
 从这个问题看出，要让 super 按正常的 MRO 顺序炒作某个方法，父类的方法都必须通过 super 正确关联。
 
-2. 如果把 B 中的 `super().add(m)` 删除，`d1.add2(2)` 调用后的 `d2.n` 值是多少呢？
+2. 如果把 B 中的 `super().add(m)` 删除，`d1.add2(2)` 调用后的 `d2.n` 值是多少呢？<br>
 答案：
 ```bash
 self is <__main__.D object at 0x10714b668> @D.add2
@@ -136,3 +137,9 @@ self is <__main__.D object at 0x10714b668> @A.add
 ```
 从这个问题看出，某个父类的 super 查找中断，并不影响从其后开始正常查找。所谓正常查找，就是其后的父类方法都通过 super 正确
 关联了。
+
+3. 在 `__new__` 方法中调用无参数 `super()` 会有什么结果<br>
+答案:   
+会抛出异常 `TypeError: object.__new__(): not enough arguments`。这是因为__new__是一个类方法，还不存在对应的实例对象。如果
+在 `classmethod`装饰器修饰的类方法上调用 `super`, 则抛出异常 `TypeError: add() missing 1 required positional argument: 'm'`。
+原因和这个差不多。
