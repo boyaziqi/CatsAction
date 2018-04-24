@@ -1,5 +1,5 @@
 Title: Python 异常问题汇总
-Date: 2018-04-24 11：20
+Date: 2018-04-24 11:20:20
 category: python
 tags: Python 异常
 
@@ -66,4 +66,4 @@ def __new__(cls, *args, **kwargs):
 
 那我不禁要问，Python3.3+ 到底怎么调用 `__init__` 方法的呢，上面的回答也答复了。`__init__` 调用是通过 `type.__call__`，那么 `object.__new__` 自然不需要知道 `__init__`  的额外参数   
 
-感谢 @Blckknght 的回答！！！
+感谢 @Blckknght 的回答！！！ 
