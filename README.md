@@ -6,8 +6,6 @@
 - 记录学习技术中遇到的问题及思考
 - 一些学习资料的整理, 学习笔记及作为后期速查资料
 
-以前的内容可以访问我的[github page](https://boyaziqi.github.io/)
-
 #### issues 主要内容目录
 - [SQLAlchemy 操作 MySQL 连接问题](https://github.com/boyaziqi/CatsAction/issues/3)
 - [Django date lookup 查询不到数据](https://github.com/boyaziqi/CatsAction/issues/9)
