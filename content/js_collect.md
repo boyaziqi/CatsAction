@@ -1,5 +1,5 @@
-Title:  js问题汇总
-Date: 2018-01-13
+Title:  工作中遇到的一些js问题整理
+Date: 2016-01-13
 Modified: 2018-01-13
 category: js
 tags: 前端, 事件, 历史记录

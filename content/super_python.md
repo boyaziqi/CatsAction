@@ -1,5 +1,5 @@
 Title: Python super 函数的理解
-Date: 2018-03-10 21:12
+Date: 2016-03-10 21:12
 category: python
 tags: super
 

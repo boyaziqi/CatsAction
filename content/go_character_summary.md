@@ -1,5 +1,5 @@
 Title: Go 相关特性总结
-Date: 2018-02-17
+Date: 2016-02-17
 Modified: 2018-02-17
 category: golang
 tags: go基础

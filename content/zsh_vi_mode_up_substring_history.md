@@ -1,5 +1,5 @@
 Title: zsh打开vi模式up向上箭头不能按子模式搜索解决方法
-Date: 2017-10-29 00:15:15
+Date: 2015-10-29 00:15:15
 category: Linux
 tags: zsh, oh-my-zsh, history-substring-search
 

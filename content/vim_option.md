@@ -1,5 +1,5 @@
 Title: vim 选项iskeyword
-Date: 2017-06-23
+Date: 2016-06-23
 category: vim
 tags: vim选项
 

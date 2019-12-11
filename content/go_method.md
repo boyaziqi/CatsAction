@@ -1,5 +1,5 @@
 Title: Go 的方法申明总结
-Date: 2018-02-17
+Date: 2016-02-17
 Modified: 2018-02-17
 category: golang
 tags: Go 面向对象

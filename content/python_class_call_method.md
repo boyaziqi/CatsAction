@@ -1,5 +1,5 @@
 Title: python类特殊方法
-Date: 2017-06-06 22:42:00
+Date: 2016-01-06 22:42:00
 category: python
 tags: __call__
 
