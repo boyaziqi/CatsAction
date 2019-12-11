@@ -4,7 +4,7 @@ category: git
 tags: git
 
 #### 将同一个文件的修改分多次添加到index暂存区
-```shell
+```bash
 # 添加每个变化前，都会要求确认
 # 对于同一个文件的多处变化，可以实现分次提交
 git add -p
@@ -17,7 +17,7 @@ $ git mv [file-original] [file-renamed]
 ```
 
 ### git commit 提交指定文件和回退上次提交
-```shell
+```bash
 # 提交暂存区的指定文件到仓库区
 $ git commit [file1] [file2] ... -m [message]
 
@@ -33,7 +33,7 @@ $ git commit --amend [file1] [file2] ...
 ```
 
 ### git branch建立和跟踪远程分支
-```shell
+```bash
 # 新建一个分支，指向指定commit
 $ git branch [branch] [commit]
 
@@ -55,7 +55,7 @@ $ git branch -dr [remote/branch]
 ```
 
 ### 查看git变更信息
-```shell
+```bash
 # 显示commit历史，以及每次commit发生变更的文件
 $ git log --stat
 
@@ -74,3 +74,4 @@ $ git diff [first-branch]...[second-branch]
 
 # 显示今天你写了多少行代码
 $ git diff --shortstat "@{0 day ago}"
+```
