@@ -16,7 +16,7 @@ $ git rm --cached [file]
 $ git mv [file-original] [file-renamed]
 ```
 
-### git commit 提交指定文件和回退上次提交
+#### git commit 提交指定文件和回退上次提交
 ```bash
 # 提交暂存区的指定文件到仓库区
 $ git commit [file1] [file2] ... -m [message]
@@ -32,7 +32,7 @@ $ git commit --amend -m [message]
 $ git commit --amend [file1] [file2] ...
 ```
 
-### git branch建立和跟踪远程分支
+#### git branch建立和跟踪远程分支
 ```bash
 # 新建一个分支，指向指定commit
 $ git branch [branch] [commit]
@@ -54,7 +54,7 @@ $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
 ```
 
-### 查看git变更信息
+#### 查看git变更信息
 ```bash
 # 显示commit历史，以及每次commit发生变更的文件
 $ git log --stat
