@@ -1,5 +1,6 @@
 关于本站
 #########
+:status: hidden
 
 本博客采用pelican搭建，pelican是python编写的静态博客生成系统，pelican源码: https://github.com/getpelican/pelican
     
