@@ -36,14 +36,14 @@ foobar = "范孝大"
 
 LOAD_CONTENT_CACHE = False
 PYGMENTS_RST_OPTIONS = {'classprefix': 'pgcss', 'linenos': 'table'}
-DEFAULT_DATE_FORMAT = '%Y-%m-%d  星期%a'
+DEFAULT_DATE_FORMAT = '%Y-%m-%d %A'
 
 # 以下为本网站自定义设置
-THEME = "gum"
+THEME = "elegant"
 GITHUB_URL = 'https://github.com/boyaziqi'
 WEIBO_URL = 'http://weibo.com/boyziqi/home?wvr=5'
 LINKEDIN_URL = 'https://www.linkedin.com/feed/'
 GOOGLEPLUS_URL = 'https://plus.google.com/u/0/'
-DISPLAY_PAGES_ON_MENU = False
+DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = False
-DEFAULT_PAGINATION = 5
+LANDING_PAGE_TITLE="It's a wonderful world"
