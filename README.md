@@ -1,7 +1,7 @@
 个人技术博客内容仓库
 -----------------
 #### 简介
-基于`pelican`生成静态页面，内容站点[CatsAction](https://boyaziqi.github.io/)。少部分内容放到`issues` 下，两边并不同步。
+基于`pelican`生成静态页面，站点内容[CatsAction](https://boyaziqi.github.io/)。少部分内容放到`issues` 下，两边并不同步。
 写作相关博客主要有两个目的：
 
 - 记录学习技术中遇到的问题及思考
