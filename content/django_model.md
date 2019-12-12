@@ -115,7 +115,7 @@ class Model(metaclass=ModelBase):
                 update_fields=update_fields, raw=raw, using=using,
             )
 ```
-简单看了`model.Model`的源码后，我们接下来简单分析下`ModelBase`代码。
+简单看了`models.Model`的源码后，我们接下来简单分析下`ModelBase`代码。
 ```python
 class ModelBase(type):
     """Metaclass for all models."""
