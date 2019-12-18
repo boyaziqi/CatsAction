@@ -101,7 +101,8 @@ log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
 <-forever
 ```
 `Publisher Confirms`和`Consumer Acknowledgements`机制差不多，当消息被成功发送到Queue，如果需要持久化，成功持久化到硬盘，
-此时Broker将给Publisher确认。
+此时Broker将给Publisher确认。<br/>
+保证Publisher发送消息成功的方式还有事务（tx transaction）。事务是AMQP支持的标准。不过事务过重，影响了MQ吞吐量。
 
 #### 集群和高可用模式
 后面的篇章将会基于Docker验证RabbitMQ的集群和高可用，也会讲解基本配置和常用的运维命令或工具，这里就先略过。
