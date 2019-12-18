@@ -38,7 +38,7 @@ vhosts的broker，而且各broker所属RabbitMQ版本可以不一致。名词含
 
 3. Exchange<br/>
 交换器，用来接收生产者发送的消息并将这些消息路由给服务器中的队列。Exchange有四种类型：direct，fanout，topic，headers。
-后面的系列文章会详细解释，也会有相对于例子。
+后面的[工作模式](#rabbitmq-work-mode) 小节会针对四种类型单独分析。
 
 4. Binding<br/>
 绑定，用于消息队列和交换器之间的关联。一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个由绑定构成的路由表。
