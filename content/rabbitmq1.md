@@ -103,7 +103,15 @@ Routing key以点分割单词，如"stock.usd.nyse"。<br/>
 将仅仅发送到第一个Queue，而"lazy.brown.fox"仅仅发送到第二个Queue。"lazy.pink.rabbit"虽然匹配第二个Queue
 两次绑定，但是第二个Queue仍然只会收到一次。
 
-6, rpc模式
+6, headers模式
+
+![headers模式]({static}/images/rabbitmq-headers-mode.png)
+
+headers模式很像topic模式，只是基于headers代替Routing key来匹配Binding。如上图，x-match字段是必须的，它有
+all和any两个值。all标识headers的其它字段都得匹配，any标识headers的其它字段至少匹配一个。header能基于integer或者hash构造，
+而不仅仅是string。
+
+7, rpc模式
 
 ![rpc模式]({static}/images/rabbitmq-rpc-mode.webp)
 
@@ -118,16 +126,10 @@ rpc模式严格说只是其他模式的应用。如上图，C端利用模式2（
 - 如果S端执行挤过异常，如何和C端确认传输的消息。
 - 消息非法的检测。
 
-7, Publisher Confirm模式
-
-![Publisher confirm模式]({static}/images/rabbitmq-rpc-mode.webp)
-
-Publisher Confirm是确保可靠传输的一个扩展。当发布的消息被Broker异步确认时，证明消息已经被另一端很好的处理。
-
 >综上，第1，2种模式可归为一类，它们使用未命名Exchange（默认""），Publisher直接将消息发送到Queue。他们分发消息的路由方式，是Publisher通过Queue name（队列名）
 直接绑定Queue。这两种方式有很明显的缺点。首先它们Queue只有一个，不好扩展。其次消息分发不够灵活，如不能根据消息的主题决定分发方式。<br/>
 第3，4，5模式可以归为一类，他们通过Exchange分发消息，不同的是Exchange type不同。这很好的解决了1，2种模式的缺点。<br/>
-rpc模式具体指示RabbitMQ其他模式的应用，Publisher Confirm只是一种可靠传输扩展。下面的表对比了前5种模式。
+rpc模式严格上只是RabbitMQ其他模式的应用，下面的表对比了前5种模式。
 
 | 模式名 | Exchange | Routing key | 特点 |
 |:------|:---------|:------------|:-----|
