@@ -6,8 +6,8 @@ tags: UnionFS, aufs, overlay2, Device mapper
 
 Docker是时下很流行的容器技术，它用到的技术主要是Cgroup，Namespace，UnionFS。
 
-- Cgroup负责资源控制，使多个容器无影响的使用计算机资源。
-- Namespace进行进程隔离，使容器拥有自己的rootfs和hostname。同时IPC、网络和其他进程隔离。
+- Cgroup为​​​系​​​统​​​中​​​所​​​运​​​行​​​任​​​务​​​（进​​​程​​​）的​​​用​​​户​​​定​​​义​​​组​​​群​​​分​​​配​​​资​​​源​​，比​​​如​​​ CPU 时​​​间​​​、​​​系​​​统​​​内​​​存​​​、​​​网​​​络​​​带​​​宽​​​或​​​者​​​这​​​些​​​资​​​源​​​的​​​组​​​合​​​​。
+- Namespace进行进程隔离，使容器拥有自己的rootfs和hostname。同时使IPC、网络和其他进程隔离。
 - UnionFS打包容器运行时的各种依赖和库，发布成镜像。在容器启动时挂载成/目录，保证了容器运行的环境的统一，方便部署和管理。
 
 ![dockers_architecture]({static}/images/dockers_architecture.png)
