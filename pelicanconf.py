@@ -25,7 +25,13 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),)
 
 # Social widget
-SOCIAL = (('github', 'https://github.com/boyaziqi'),)
+SOCIAL_PROFILE_LABEL = u'Stay in Touch'
+SOCIAL = (
+  ('Email', 'catsaction@126.com', 'My Email Address'),
+  ('Github', 'https://github.com/boyaziqi', 'catsaction Github Repository'),
+  ('LinkedIn', 'https://www.linkedin.com/feed/', 'My LinkedIn'),
+)
+PLUGINS = ['neighbors']
 
 DEFAULT_PAGINATION = 10
 
