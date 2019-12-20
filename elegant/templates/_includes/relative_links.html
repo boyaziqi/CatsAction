@@ -1,0 +1,17 @@
+{% if LINKS %}
+{% if not LINKS_PROFILE_LABEL %}
+{% set LINKS_PROFILE_LABEL = 'Friendship Link' %}
+{% else %}
+{% set LINKS_PROFILE_LABEL = LINKS_PROFILE_LABEL %}
+{% endif %}
+<h4>{{ LINKS_PROFILE_LABEL }}</h4>
+<ul class="list-of-tags tags-in-article">
+    {% for entry in LINKS %}
+    <li>
+    <a href="{{entry[1]}}" title="{{entry[2]}}" target="_blank" rel="nofollow noopener noreferrer">
+      {{ entry[0] }}
+    </a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endif %}
