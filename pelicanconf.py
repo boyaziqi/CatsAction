@@ -21,8 +21,13 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),)
+LINKS = (
+  ('LeetCode', 'https://leetcode-cn.com/', '力扣中国站点'),
+  ('CoolShell', 'https://coolshell.cn/about', '陈皓酷壳'),
+  ('InfoQ', 'https://www.infoq.cn/', 'InfoQ'),
+  ('牛客网', 'https://www.nowcoder.com/', '牛客网'),
+)
+LINKS_PROFILE_LABEL = None
 
 # Social widget
 SOCIAL_PROFILE_LABEL = u'Stay in Touch'
@@ -46,10 +51,6 @@ DEFAULT_DATE_FORMAT = '%Y-%m-%d %A'
 
 # 以下为本网站自定义设置
 THEME = "elegant"
-GITHUB_URL = 'https://github.com/boyaziqi'
-WEIBO_URL = 'http://weibo.com/boyziqi/home?wvr=5'
-LINKEDIN_URL = 'https://www.linkedin.com/feed/'
-GOOGLEPLUS_URL = 'https://plus.google.com/u/0/'
-DISPLAY_PAGES_ON_MENU = True
-DISPLAY_CATEGORIES_ON_MENU = False
+# DISPLAY_PAGES_ON_MENU = True
+# DISPLAY_CATEGORIES_ON_MENU = False
 LANDING_PAGE_TITLE="It's a wonderful world"
