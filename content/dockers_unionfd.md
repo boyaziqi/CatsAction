@@ -1,8 +1,8 @@
-title: Docker系列
+title: Docker系列（二）
 subtitle: 技术原理（UnionFS，Namespace，Cgroup）
 date: 2017-12-01
 category: Docker 
-tags: UnionFS, aufs, overlay2, Device mapper
+tags: UnionFS, aufs, overlay2, Device mapper, Docker
 
 Docker是时下很流行的容器技术，它用到的技术主要是Cgroup，Namespace，UnionFS。
 
