@@ -1,8 +1,8 @@
 title: RabbitMQ系列第二篇
 subtitle: 如何保证消息可靠性
 date: 2017-01-21
-category: MQ
-tags: RabbitMQ,Go
+category: RabbitMQ
+tags: MQ,Go
 
 *在RabbitMQ使用中，如果一个任务分发给一个Worker，而Worker执行到一半就退出了，这时如何保证消息不丢失呢？下面一起看看RabbitMQ保证消息可靠传输机制。*
 #### 可靠传输机制
