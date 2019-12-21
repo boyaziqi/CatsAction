@@ -1,11 +1,13 @@
 个人技术博客内容仓库
 -----------------
 #### 简介
-基于`pelican`生成静态页面，站点内容[CatsAction](https://boyaziqi.github.io/)。少部分内容放到`issues` 下，两边并不同步。
-写作相关博客主要有两个目的：
+基于[pelican](https://github.com/getpelican/pelican)生成，站点内容[CatsAction](https://boyaziqi.github.io/)。
+写作相关内容主要有两个目的：
 
 - 记录学习技术中遇到的问题及思考
 - 一些学习资料的整理, 学习笔记及作为后期速查资料
+
+如果你查看我的文章有什么想法，欢迎在本仓库提`issue`交流。(备注上文章链接)
 
 #### issues 主要内容目录
 - [SQLAlchemy 缓存问题](https://github.com/boyaziqi/CatsAction/issues/2)
