@@ -24,7 +24,7 @@ AUTHOR_FEED_RSS = None
 LINKS = (
   ('LeetCode', 'https://leetcode-cn.com/', '力扣中国站点'),
   ('CoolShell', 'https://coolshell.cn/about', '陈皓酷壳'),
-  ('InfoQ', 'https://www.infoq.cn/', 'InfoQ'),
+  ('Yikun', 'https://yikun.github.io/', '姜毅坤博客'),
   ('牛客网', 'https://www.nowcoder.com/', '牛客网'),
 )
 LINKS_PROFILE_LABEL = None
