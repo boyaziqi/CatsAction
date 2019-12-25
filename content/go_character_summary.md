@@ -16,6 +16,9 @@ tags: go基础
 - 内置垃圾回收机制。
 - 方法申明显示的指定接收者。
 
+#### GO垃圾回收机制
+go垃圾回收机制采用三色标记法https://juejin.im/post/5d56b47a5188250541792ede
+
 #### 接口风格
 下面的file结构体实现了stream接口，可以将file实例赋值给stream接口变量。
 ```go
