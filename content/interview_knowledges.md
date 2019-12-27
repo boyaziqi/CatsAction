@@ -63,9 +63,12 @@ CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也�
 见[对比](https://zhuanlan.zhihu.com/p/30555962)
 
 #### MySQL回表
+参考[InnoDB聚集索引普通索引，回表，索引覆盖](https://www.cnblogs.com/myseries/p/11265849.html)
 
 #### MySQL存储引擎
 #### MySQL索引
 #### MySQL事务
 #### MySQL锁
 #### MySQL优化的一些理解
+
+#### Python垃圾回收机制

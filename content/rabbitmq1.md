@@ -140,3 +140,4 @@ rpc模式严格上只是RabbitMQ其他模式的应用，下面的表对比了前
 | topic模式 | type值为topic | 需要指定 | 模式匹配, 需要绑定Exchange和Queue，即创建Binding |
 
 #### RabbitMQ和Kafka对比
+后面学习kafka补上。
