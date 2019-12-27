@@ -138,3 +138,5 @@ rpc模式严格上只是RabbitMQ其他模式的应用，下面的表对比了前
 | publish/subscribe模式 | type值为fanout | "" | 需要绑定Exchange和Queue，即创建Binding。多个Queue都会收到消息|
 | routing模式 | type值为direct | 需要指定 | 精确匹配, 需要绑定Exchange和Queue，即创建Binding |
 | topic模式 | type值为topic | 需要指定 | 模式匹配, 需要绑定Exchange和Queue，即创建Binding |
+
+#### RabbitMQ和Kafka对比
