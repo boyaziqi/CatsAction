@@ -72,3 +72,4 @@ CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也�
 #### MySQL优化的一些理解
 
 #### Python垃圾回收机制
+引用计数，标记清除，分代回收
