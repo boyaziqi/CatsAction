@@ -67,9 +67,154 @@ CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也�
 
 #### MySQL存储引擎
 #### MySQL索引
+MySQL索引类型：普通索引，唯一索引，主键索引（表只能有一个索引，必须唯一，不能允许空值），组合索引，全文索引（旧版本只有MyISAM支持，新版本InnoDB也支持）<br>
+全文索引：普通索引通过数值的精确比较确认搜索范围，而全文索引通过模糊匹配确认查询。常用于char，text类型字段上。<br>
+suo
 #### MySQL事务
 #### MySQL锁
 #### MySQL优化的一些理解
 
 #### Python垃圾回收机制
 引用计数，标记清除，分代回收
+
+#### Python CI/CD工具
+可以使用最流行的jenkins，还有自带的BuildBot，Tox。博派通达使用Buildbot构建代码，是用Tox自动化执行测试。
+
+#### Python自动运维工具
+SaltStack，Supervisor，Ansible
+
+#### Linux Find命令
+参考https://www.cnblogs.com/RXDXB/p/11696751.html
+1, 基本用法
+```bash
+find /home -name test
+find /home -name "*.py"
+```
+2, 指定查找类型
+```bash
+# 通过-type指定，d目录，f文件
+# 在/home目录下查找test目录
+find /home -type d -name test
+```
+3, 根据权限查找
+```bash
+find /home -type f -perm 0777 -print
+find /home -type f -perm /u=r
+```
+4, 查找空文件
+```bash
+find /home -type f -empty
+```
+5, 根据用户和组来查找
+```bash
+find /home -user root -name test
+find /home -group mysql -name test
+```
+6, 根据文件创建，修改，访问时间查找
+```bash
+# -mtime   -n +n                 #按文件更改时间来查找文件，-n指n天以内，+n指n天以前
+# -atime    -n +n                 #按文件访问时间来查GIN: 0px">
+# -ctime    -n +n                 #按文件创建时间来查找文件，-n指n天以内，+n指n天以前
+find . -ctime -20
+```
+7, 根据文件尺寸查找（-size)
+
+#### 两台Linux主机拷贝文件的方式
+scp，ftp，rsync
+
+#### Linux查用命令汇总
+- ps
+- cp（-p保留权限拷贝）
+- 查看端口的命令：netstat，lsof(lsof -i :8088)
+- 查看负载（w，uptime，iostat。可以显示1m，5m，10m平均负载值）
+- 查看cpu: cat /proc/cpuinfo
+- 查看磁盘信息：fdisk -l
+- 查看内存信息： cat /proc/meminfo， free
+- 查看硬盘目录占用空间大小：du -h /home
+- 磁盘分区：fdisk
+- 磁盘挂载：mount
+- 抓包命令：tcpdump
+- io监控命令： iotop， iostat。
+- 网络速率测试（Python工具speedtest）
+- ip相关命令(ifconfig，hostname，ip addr show)
+- 开机自启动（systemctl enable httpd。conetos6用systemd。也可以给~/.bashrc加启动脚本，或者放到/etc/rc.local添加启动脚本）
+- 服务管理命令：systemctl。
+
+#### systemctl服务类型
+- Service unit：系统服务
+- Target unit：多个 Unit 构成的一个组
+- Device Unit：硬件设备
+- Mount Unit：文件系统的挂载点
+- Automount Unit：自动挂载点
+- Path Unit：文件或路径
+- Scope Unit：不是由 Systemd 启动的外部进程
+- Slice Unit：进程组
+- Snapshot Unit：Systemd 快照，可以切回某个快照
+- Socket Unit：进程间通信的 socket
+- Swap Unit：swap 文件
+- Timer Unit：定时器
+```bash
+systemctl list-units
+systemctl status
+sudo systemctl stop apache.service
+systemctl list-unit-files --type=target
+```
+
+#### 常见设计模式
+- 单例模式：Python可以通过装饰器，元类，或者类属性实现
+- 策略模式
+- 代理模式
+- 观察者模式，又叫订阅发布模式，生产者消费模式。
+- 装饰器模式
+- 迭代器模式
+- 适配器模式
+- 工厂模式
+- 命令模式
+- 组合模式
+- 模板方法模式
+- 访问者模式
+
+#### Python 异步编程
+进程，线程，协成
+asyncio：get_event_loop， run_until_complete， get_running_loop
+
+#### 常用的Python标准库
+- re
+- string
+- datetime
+- time
+- weakref
+- math
+- enum
+- random
+- collection(OrderDict, DefaultDict, ChainMap, Counter)
+- collection.abc
+- decimal
+- itertools(chain)
+- functiontools
+- pickle
+- os
+- logging
+- threading
+- asyncio
+- urllib
+- unitest
+- unitest.mock
+- sys
+- types
+- hashlib
+
+#### 明源云面试题
+- 写出几个Python优雅的写法。
+- *args和**kwargs含义及作用。
+- tuple,list, dict, set区别。
+- Python多线程和多进程的区别。
+- 二分查找
+- 生产者消费者实现
+- 金典的找出部门最高工资sql
+- 微服务优缺点
+- 进程间通信方式
+- 一个Python代码输出题
+- solid原则
+- 协程不适合什么场景。
+- 如何优化单机Gunicore/sWsgi性能。
