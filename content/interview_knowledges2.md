@@ -30,6 +30,8 @@ pytest，unitest，mock, nose, doctest, tox
 #### IO模型
 select，poll，epoll
 
+#### 短连接的实现方式（腾讯面试题）
+
 #### Django设计思想
 观察者模式，也叫发布订阅模式。Django的信号就是。
 
