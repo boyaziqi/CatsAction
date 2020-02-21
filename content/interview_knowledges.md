@@ -9,7 +9,7 @@ tags: hash,cache
 一致性Hash算法将整个哈希值空间组织成一个虚拟的圆环，如假设某哈希函数H的值空间为0-2^32-1。首先将服务器hash（通过ip或主机名)
 映射到Hash环上。定位数据资源的时候，将数据key用相同的hash方法算出hash值，并找到key在hash环上的位置。顺时针查找，遇到的第一台服务器即为
 数据定位的服务器。一致性hash有很好的扩展性和容错性，即增加和减少一台服务器时，影响的只是对应区段的数据映射。不过一致性hash也会造成数据倾斜（数据节点太少且分布不均）。
-可以通过增加虚拟节点和
+可以通过增加虚拟节点和将环映射到均匀的线上。
 
 #### IO复用
 IO复用也是一种阻塞式调用，不过它阻塞于多个描述符，即可以同时等待多个描述符就位。只要其中之一满足条件，调用就返回。<br>
@@ -86,11 +86,14 @@ SaltStack，Supervisor，Ansible
 #### Linux Find命令
 参考https://www.cnblogs.com/RXDXB/p/11696751.html
 1, 基本用法
+
 ```bash
 find /home -name test
 find /home -name "*.py"
 ```
+
 2, 指定查找类型
+
 ```bash
 # 通过-type指定，d目录，f文件
 # 在/home目录下查找test目录
@@ -110,13 +113,16 @@ find /home -type f -empty
 find /home -user root -name test
 find /home -group mysql -name test
 ```
+
 6, 根据文件创建，修改，访问时间查找
+
 ```bash
 # -mtime   -n +n                 #按文件更改时间来查找文件，-n指n天以内，+n指n天以前
 # -atime    -n +n                 #按文件访问时间来查GIN: 0px">
 # -ctime    -n +n                 #按文件创建时间来查找文件，-n指n天以内，+n指n天以前
 find . -ctime -20
 ```
+
 7, 根据文件尺寸查找（-size)
 
 #### 两台Linux主机拷贝文件的方式
@@ -204,17 +210,33 @@ asyncio：get_event_loop， run_until_complete， get_running_loop
 - types
 - hashlib
 
-#### 明源云面试题
+#### 明源云笔试题
 - 写出几个Python优雅的写法。
 - *args和**kwargs含义及作用。
 - tuple,list, dict, set区别。
 - Python多线程和多进程的区别。
 - 二分查找
 - 生产者消费者实现
-- 金典的找出部门最高工资sql
+- 经典的找出部门最高工资sql
 - 微服务优缺点
 - 进程间通信方式
 - 一个Python代码输出题
 - solid原则
 - 协程不适合什么场景。
 - 如何优化单机Gunicore/sWsgi性能。
+
+#### 明源云一面
+- 技术选型的出发点（简历）
+- 代码规范的一些思想（简历）
+- Python垃圾回收机制，面试官让深入谈谈标记清零
+- MySQL索引常见索引数据结构（我回答Hash索引和BTree+索引）
+- 接上一问，详情谈谈Hash索引和BTree+索引的区别及应用场景。
+- 主键索引和普通索引的区别（需要谈查询机制的区别）。
+- 唯一索引和普通索引的区别（需要谈查询机制的区别）。
+- 聊Docker，问有没有K8S经验（我答没有实际项目中的经验)
+- Docker怎么限制CPU、内存、IO等资源。
+- 接上一问，Docker限制资源的底层原理。
+- 如果拷贝Docker里的文件到宿主机（我抖了一个机灵，回答挂载数据卷就可以写到本机。然后回答还可以通过网络拷贝如scp。但是面试官想要的没有启动的一个容器呢，我一时想不起。在面试官引导下，我明白了，UnionFS挂载的就是本地资源，找到挂载点就可以拷贝了。面试官人真好）
+- 聊了一些怎么学技术，在看哪些书。
+- 问我想找一份什么样的工作。
+- 有什么想问的（我问了团队成员情况，文化氛围，资源权限等）

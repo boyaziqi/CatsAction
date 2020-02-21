@@ -35,7 +35,7 @@ CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害�
 对于CSRF的预防，可以禁止跨域访问，或者追加一个Token（AES/CBC/PKCS5Padding 模式加密用户id，时间戳和一个随机字符串生成）
 
 ###### SQL注入
-SQL注入是攻击者利用网站漏铜，输入特殊的SQL字符从而，从而执行数据库达到获取敏感信息或破坏数据库的目的。具体的SQL注入，可参考[SQL注入演练](https://www.oschina.net/translate/sql-injection-walkthrought)
+SQL注入是攻击者利用网站漏铜，输入特殊的SQL字符，从而执行数据库达到获取敏感信息或破坏数据库的目的。具体的SQL注入，可参考[SQL注入演练](https://www.oschina.net/translate/sql-injection-walkthrought)
 
 ###### 点击劫持
 点击劫持是指在一个Web页面下隐藏了一个透明的iframe（opacity：0），用外层假页面诱导用户点击，实际上是在隐藏的frame上触发了点击事件进行一些用户不知情的操作。详情请看[浅析解析劫持攻击](https://www.freebuf.com/articles/web/67843.html)
