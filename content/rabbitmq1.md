@@ -140,4 +140,9 @@ rpc模式严格上只是RabbitMQ其他模式的应用，下面的表对比了前
 | topic模式 | type值为topic | 需要指定 | 模式匹配, 需要绑定Exchange和Queue，即创建Binding |
 
 #### RabbitMQ和Kafka对比
-后面学习kafka补上。
+- Kafka支持消息回溯，RabbitMQ不支持。
+- RabbitMQ支持消费者推，而Kafka不支持。
+- Kafka消息被有序的追加到每个主题消息分区。
+- Kafka消费者通过维护分区的偏移（或者说索引）来顺序的读出消息，然后消费消息。
+- rabbitMQ支持对消息的可靠的传递，支持事务，不支持批量的操作。
+- kafka具有高的吞吐量，内部采用消息的批量处理，zero-copy机制，数据的存储和获取是本地磁盘顺序批量操作，具有O(1)的复杂度，消息处理的效率很高。
