@@ -49,7 +49,7 @@ MyISAM支持空间索引，可以用作地理数据存储。这类索引无须�
 
 ###### 其他索引
 
-例如TukoDB使用分形树所以（fractal tree index）。
+例如TukoDB使用分形树索引（fractal tree index）。
 
 ##### 聚簇索引
 
