@@ -1,4 +1,4 @@
-基于Docker构建Redis主复制和Sentinel哨兵
+基于Docker构建Redis主从复制和Sentinel哨兵
 -------------------------------------
 
 #### 使用方式
