@@ -32,7 +32,7 @@ CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害�
 
 关注CSRF的详细介绍，参考美团技术团队文章[前端安全系列之二：如何防止CSRF攻击？](https://www.cnblogs.com/meituantech/p/9777222.html)
 
-对于CSRF的预防，可以禁止跨域访问，或者追加一个Token（AES/CBC/PKCS5Padding 模式加密用户id，时间戳和一个随机字符串生成）
+对于CSRF的预防，可以禁止跨域访问，或者追加一个Token（由AES/CBC/PKCS5Padding模式加密用户id，时间戳和一个随机字符串生成。短信验证码也能起到这样的功能。）
 
 ###### SQL注入
 SQL注入是攻击者利用网站漏铜，输入特殊的SQL字符，从而执行数据库达到获取敏感信息或破坏数据库的目的。具体的SQL注入，可参考[SQL注入演练](https://www.oschina.net/translate/sql-injection-walkthrought)
