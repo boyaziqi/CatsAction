@@ -116,13 +116,13 @@ services:
             - ./logs/sentinel3/:/var/log/redis/
         command: redis-sentinel /usr/local/etc/redis/sentinel.conf
 ```
-修改RedisB的配置文件`./config/redis2/redis.conf`加入如下配置指定主服务节点地址。RedisC配置相同。
+修改RedisB的配置文件`./config/redis2/redis.conf`，加入如下配置指定主服务节点地址。RedisC配置相同。
 ```bash
 slaveof redis-replication_redisA_1 6379
 ```
 增加上面的配置后，在终端docker-compose.yml文件所在目录执行`docker-compose up`启动容器，这样一主两从的Redis主从服务就搭建好了。 可以在主服务节点set一个key验证从服务节点是否正常复制。
 
-我们终端执行命令`docker ps`查看下容器运行情况，我机器上如下，每个人的CONTAINER ID不一样。
+我们在终端执行命令`docker ps`查看容器运行情况，我机器上显示如下，每个人的CONTAINER ID不一样。
 ```bash
 CONTAINER ID        IMAGE                  COMMAND                  CREATED              STATUS              PORTS                      NAMES
 ce0c4d42c6a0        redis                  "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:6376->6379/tcp     redis-replication_redisA_1
