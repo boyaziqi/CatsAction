@@ -27,3 +27,30 @@ services:
             - ./config/redis3/:/usr/local/etc/redis/
             - ./logs/redis3/:/var/log/redis/
         command: redis-server /usr/local/etc/redis/redis.conf
+    sentinelA:
+        image: redis
+        restart: always
+        ports:
+            - "6381:6379"
+        volumes:
+            - ./config/sentinel/:/usr/local/etc/redis/
+            - ./logs/sentinel1/:/var/log/redis/
+        command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    sentinelB:
+        image: redis
+        restart: always
+        ports:
+            - "6382:6379"
+        volumes:
+            - ./config/sentinel/:/usr/local/etc/redis/
+            - ./logs/sentinel2/:/var/log/redis/
+        command: redis-sentinel /usr/local/etc/redis/sentinel.conf
+    sentinelC:
+        image: redis
+        restart: always
+        ports:
+            - "6383:6379"
+        volumes:
+            - ./config/sentinel/:/usr/local/etc/redis/
+            - ./logs/sentinel3/:/var/log/redis/
+        command: redis-sentinel /usr/local/etc/redis/sentinel.conf
