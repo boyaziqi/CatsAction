@@ -5,7 +5,7 @@ tags: Redis
 
 文章最后，我会基于Docker部署Redis主从和验证Sentinel模式。相关实现已经放到我的GitHub博客源，欢迎克隆交流学习。[Docker搭建Redis主从和Sentinel](https://github.com/boyaziqi/CatsAction/tree/master/examples/redis-replication)
 
-##### Redis主从同步原理
+## Redis主从同步原理
 ###### 1，增量同步
 主从服务器同步的是执行的指令流。当主服务器收到指令时，会将指令写到buffer（buffer大小固定，可配置更改），然后异步将执行指令同步到从服务器。
 当buffer空间不足时，新收到指令会导致旧数据覆盖，这时会触发快照同步。
@@ -29,7 +29,7 @@ Redis主服务会生成快照文件dump.rdb，当从服务首次连接到主服�
 ![dockers_vm]({static}/images/redis_master_replication.jpg)
 </center>
 
-##### Sentinel模式简介
+## Sentinel模式简介
 Redis主从服务采取读写分离，主服务负责写，从服务负责读。当主服务宕机时，Redis主从并不会从新选择主服务，这将导致整个主从服务无法正常工作。官方推荐的
 主从同步高可用方案是Sentinel，它会监控和复制服务状态，当主服务宕机后，会根据选举算法从后端从服务选择新的主服务。Sentinel本身也有单点瓶颈的问题，因此也需要集群。
 
@@ -37,7 +37,7 @@ Redis主从服务采取读写分离，主服务负责写，从服务负责读。
 ![dockers_vm]({static}/images/redis_sentinel.jpg)
 </center>
 
-##### 工作机制
+## 工作机制
 Sentinel会运行三个定时任务（监控，通知，故障迁移）。当Redis主服务宕机后，会根据一定的机制选择一个领导Sentinel来执行故障迁移。主服务选择出来并配置成功后，领导Sentinel
 通过`slaveof ip port`让其他从服务同步新的主服务。原来的主服务如果重新加入，则会成为新主服务的从服务。
 
@@ -55,7 +55,7 @@ Sentinel会运行三个定时任务（监控，通知，故障迁移）。当Red
 - 选择复制偏移量最大的slave节点（复制最完整），如果有返回，没有继续。
 - 选择runId最小的slave节点。
 
-##### 测试
+## 测试
 为了方便验证和部署Redis主从，我基于Docker-compose构建了验证环境，实现查看文章开头的信息。docker-compose.yml文件内容如下。
 其中RedisA作为主服务节点，RedisB和RedisC作为从服务节点。
 ```yaml

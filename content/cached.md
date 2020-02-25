@@ -3,7 +3,7 @@ date: 2019-03-02
 category: Cached
 tags: Redis, Memcached
 
-##### 缓存可能存在的问题
+## 缓存可能存在的问题
 
 ###### 缓存雪崩
 定义：指缓存里key的失效时间一致或者差距很小，导致在一个很短的时间内，大量缓存key失效。次数对应大部分数据请求，缓存都是未命中，从而给数据库造成压力。
@@ -31,7 +31,7 @@ tags: Redis, Memcached
 
 增加二级缓存。根据LRU算法，如果某个缓存key的访问频率达到一定次数，则把它放入第二级缓存。最近有访问则放入队列头，从队列尾淘汰相对很近未访问的key。
 
-##### Memcached和Redis的区别
+## Memcached和Redis的区别
 - Memcached单进程多线程，而Redis单进程单线程。处理小数据时，Redis性能比Memcached高，而在100K以上的数据中，Memcached性能要高于Redis。
 
 - Memcached只支持key-value数据类型，而Redis支持丰富的数据类型。
@@ -46,14 +46,14 @@ tags: Redis, Memcached
 
 关于Memcached和redis对比，可以参考[Memcached和Redis区别](http://www.360doc.com/content/18/0309/11/11935121_735604822.shtml)
 
-##### Redis主从复制的高可用解决方案
+## Redis主从复制的高可用解决方案
 Redis-Sentinel是Redis官方推荐的高可用性(HA)解决方案，当用Redis做Master-slave的高可用方案时，如果master宕机，Redis自身并不能实现自动进行主备切换。
 
 sentinel可以监控复制节点的状态，当主节点宕机后，它能根据选举方式选出后端的一个从节点作为新的master，sentinel还能监控多个master-slave集群，发现master宕机后能进行自动切换。
 
 同时，sentinel本身也存在单点问题，通常sentinel也是一个集群。
 
-###### sentinel集群工作原理
+## sentinel集群工作原理
 - sentinel集群通过给定的配置文件发现master，启动时会监控master。通过向master发送info信息获得该服务器下面的所有从服务器。
 
 - sentinel集群通过流言协议与其他sentinel通信，以此来发现监视同一个主服务器的其他sentinel；集群之间会互相创建命令连接用于通信。
