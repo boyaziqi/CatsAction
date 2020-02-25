@@ -1,0 +1,29 @@
+version: '3'
+services:
+    redisA:
+        image: redis
+        restart: always
+        ports:
+            - "6376:6379"
+        volumes:
+            - ./config/redis1/:/usr/local/etc/redis/
+            - ./logs/redis1/:/var/log/redis/
+        command: redis-server /usr/local/etc/redis/redis.conf
+    redisB:
+        image: redis
+        restart: always
+        ports:
+            - "6377:6379"
+        volumes:
+            - ./config/redis2/:/usr/local/etc/redis/
+            - ./logs/redis2/:/var/log/redis/
+        command: redis-server /usr/local/etc/redis/redis.conf
+    redisC:
+        image: redis
+        restart: always
+        ports:
+            - "6378:6379"
+        volumes:
+            - ./config/redis3/:/usr/local/etc/redis/
+            - ./logs/redis3/:/var/log/redis/
+        command: redis-server /usr/local/etc/redis/redis.conf
