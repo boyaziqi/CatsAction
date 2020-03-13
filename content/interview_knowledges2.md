@@ -65,6 +65,8 @@ select，poll，epoll
 - 进程间通信（消息队列）
 - HTTP
 
+#### Python协成实现机制及AsyncIO库
+
 #### 为什么选择了RPC及gRPC？
 - 对输入和输出校验，集成了认证
 - 写起来清晰，像调用本地的方法。
@@ -76,12 +78,29 @@ gRPC文档更完善，而且Protobuf语法友好。
 #### 项目中遇到的困难、挑战和解决方法
 - 统计数据库的问题
 - too many open file（ulimit -n 65535调整最大文件限制数）。官方bug，线程池创建回收竞态。
-- 服务拆分问题
+- 服务拆分问题及服务发现
+- MySQL主从复制server_id未生效（配置应放到[mysqld]模块下）
+- 订单定时取消的问题
+- 定时发送短信通知的问题
+- 取消和支付并发了，取消了另一方支付了（怎么解决）
+- 购物车（可以基于Redis解决）
+- 查找Ip、电话归属（Redis解决方案）
+- 地区排序（可以基于Redis解决）
+- 医生排序（可以基于Redis解决）
+- Redis缓存统计页面访问信息
+- 找到一个Redis事务（multi, watch）应用场景
+- 统计中消息队列的应用
+- 记录最近查询
+- 怎么样实现全文搜索（知乎，GitHub那样过滤任何部分）
+- 怎么解决32位信号量计数器溢出问题
+- redis实现延迟发布活动，或延迟上架
+- 反向索引
+- 关注者列表
 
 #### 想找一份什么样的工作
 - 云平台开发的工作
 - 底层的开发，而不是纯面向业务
-- 哈哈
+- 在线教育、商城、视频网站
 
 #### 孤儿进程和僵尸进程
 ###### 孤儿进程
@@ -105,3 +124,65 @@ gRPC文档更完善，而且Protobuf语法友好。
 
 #### TCP控制时间的头部
 选项（4bit）中kind=8是可以填充时间戳。
+
+#### 性能测试工具
+- ab
+- http_load
+
+#### MySQL数据库性能测试工具
+- mysqlslap（自带）
+- MySQL Benchmark Suit
+- Super Smark
+- Database Test Suit
+- sysbench
+- MySQL BENCHMARK函数
+
+#### MySQL服务器性能分析（响应时间）
+1. Percona Toolkit的pt-query-digest命令分析慢查询日志，定位到导致慢查询的单条语句；
+2.用`show profiles`详细分析单条语句的执行时间。
+
+#### 如何排除MySQL查询慢是慢查询语句问题还是服务器整体问题
+- 使用`show global status`命令查看thread_runing，queries等字段的情况，很大表明服务器等待任务过多导致响应时间变慢；
+- 使用`show processlist`命令查看查询状态；
+- 使用慢查询日志。
+
+#### Dcoker内存和CPU限制
+- -m --memory限制内存
+- -cpu-shares 512限制权重，默认是1024
+- --blkio-weight 600限制io权重，默认是500
+
+#### MySQL主从复制原理
+
+mysql主从是异步复制过程
+
+master开启bin-log功能，日志文件用于记录数据库的读写增删
+需要开启3个线程，master IO线程，slave开启 IO线程 SQL线程，
+Slave 通过IO线程连接master，并且请求某个bin-log，position之后的内容。
+MASTER服务器收到slave IO线程发来的日志请求信息，io线程去将bin-log内容，position返回给slave IO线程。
+slave服务器收到bin-log日志内容，将bin-log日志内容写入relay-log中继日志，创建一个master.info的文件，该文件记录了master ip 用户名 密码 master bin-log名称，bin-log position。
+slave端开启SQL线程，实时监控relay-log日志内容是否有更新，解析文件中的SQL语句，在slave数据库中去执行。
+
+#### MySQL主从复制遇到的问题
+
+###### 1.server—id配置没生效
+放错位置，应该放到[mysqld]模块
+
+###### 2. start slave启动主从报uuid相同错误
+数据目录下的auto.cnf里的server-uuid配置相同（为什么相同，不是自己生成的吗）。    
+答案：我用的Docker安装MySQL，两个数据目录当时直接拷贝的，导致一样。
+
+###### 3. 启动slave时报错Slave failed to initialize relay log info structure from the repository
+
+这是因为slave的slave_relay_log_info表存储的还是比较旧的信息，需要情况。用下面两个命令对比数据是不是不一致。
+```bash
+mysql>select * from mysql.slave_master_info \G;
+mysql>select * from mysql.slave_relay_log_info\G;
+```
+其中Master_log_name和Master_log_pos需要一致，不一致清空再开启主从。用下面命令清空。
+```bash
+mysql>reset slave;
+```
+下面的命令开启主从复制，读写分离。
+```bash
+mysql>start slave;
+```

@@ -76,7 +76,7 @@ Redis提供RDB和AOF两种持久化方式。RDB持久化方式会在一个特定
 #### 内存优化
 <h3></h3>
 
-- Redis string数据结构没有采用C预约的string，而是自己设计了数据结构，保持了字符串长度和预分配空间。由于预分配空间的存在，会造成内存浪费，因此不要频繁的坐字符串append操作。
+- Redis string数据结构没有采用C预约的string，而是自己设计了数据结构，保持了字符串长度和预分配空间。由于预分配空间的存在，会造成内存浪费，因此不要频繁的使用字符串append操作。
 - 共享内存。Redis存储整数时会共享内存。但是设置maxmemory和LRU时失效，应注意相关数据和设置的优化。
 - 编码优化。使用OBJECT encoding key查看编码方式。
 - 控制key数量。过多的key会造成内存浪费，可以将多个key整合到hash类型里，并保证value不超过hash-max-ziplist-value限制，这样可以利用ziplist编码。
