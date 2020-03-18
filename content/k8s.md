@@ -1,6 +1,6 @@
 title: Kubernetes系列一
 subtitle: 原理和基本概念
-date: 2019-01-24
+date: 2019-02-03
 category: Kubernetes
 tags: k8s, docker
 
@@ -31,7 +31,7 @@ Node 节点维护运行的 Pod 并提供 Kubernetes 运行时环境。
 - kubelet，Node 节点的代理，负责容器创建、暂停等任务。提供各种机制保证容器运行和健康检测。
 - kube-proxy，Kubernetes service 的通信与负载均衡机制的重要组件。
 
-#### RabbitMQ 业务概念
+#### Kubernetes业务概念
 ##### Pods
 最小部署单元，可包含多个容器，是连接在一起的容器组合并共享 Volume。它们是最小的部署单元，由 Kubernetes 统一创建、调度、管理。Pods是可以直接创建的，但推荐的做法是使用 Replication Controller，即使是创建一个 Pod。
 ![pods]({static}/images/k8s_pod.svg)

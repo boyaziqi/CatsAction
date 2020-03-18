@@ -1,8 +1,7 @@
-title: MySQL高可用方案之
-subtitle: MySQL Group Replication
-date: 2018-01-10
-category: Redis
-tags: Redis, Python
+title: MySQL高可用方案
+date: 2018-09-30
+category: MySQL
+tags: MySQL, HA, Orchestrator, MGR
 
 ## 常见MySQL集群方案
 
@@ -50,12 +49,3 @@ MySQL5.7新增功能
 - MariaDB Galera Cluster
 
 - Percona XtraDB Cluster(PXC)
-
-## MGR部署
-环境ubuntu18.04，MySQL5.7
-
-1， 安装MySQL5.7
-```bash
-sudo apt install mysql-server
-```
-其他略

@@ -1,5 +1,5 @@
 title: 《MySQL技术内幕:InnoDB存储引擎》读书笔记
-date: 2019-04-10
+date: 2018-10-10
 category: 读书笔记
 tags: DB,SQL,MySQL
 
@@ -155,7 +155,7 @@ MySQL数据库支持以下几种类型的分区：
 
 叶子节点存储键和行记录的主键，因此查询数据可能产生回表，可以通过索引覆盖解决。
 
-关于聚簇索引和索引覆盖，查看我的另一篇博客[聚簇索引]({filename}/mysql_index_data_structure.md)
+关于聚簇索引和索引覆盖，查看我的另一篇博客[聚簇索引]({filename}/mysql3.md)
 
 3）索引管理
 

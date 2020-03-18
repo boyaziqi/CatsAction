@@ -1,6 +1,6 @@
 title: Django项目部署实践一
 subtitle: 基于MySQL读写分离和Nginx反向代理
-date: 2018-01-10
+date: 2018-04-15
 category: Redis
 tags: Redis, Python
 

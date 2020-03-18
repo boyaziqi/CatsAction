@@ -1,4 +1,5 @@
-title: Redis Sentinel模式
+title: Redis系列二
+subtitle: Sentinel模式
 date: 2020-01-09
 category: Redis
 tags: Redis

@@ -1,6 +1,6 @@
-title: MySQL索引之
-subtitle: 数据结构
-date: 2019-05-05
+title: MySQL系列三
+subtitle: 索引数据结构
+date: 2019-08-13
 category: MySQL
 tags: 数据库, 数据结构
 

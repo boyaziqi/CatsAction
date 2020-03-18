@@ -1,8 +1,8 @@
-title: Redis入门知识整理
-date: 2018-05-11
+title: Redis系列一
+subtitle: 概念和数据类型
+date: 2019-09-28
 category: Redis
-tags: Cache, Non-relational databases
-
+tags: Redis
 
 #### Redis特点
 <h3></h3>

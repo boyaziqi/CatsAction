@@ -1,6 +1,6 @@
 title: MySQL系列二
 subtitle: 事务和锁
-date: 2018-11-08
+date: 2019-08-10
 category: MySQL
 tags: DB,SQL,MySQL
 
