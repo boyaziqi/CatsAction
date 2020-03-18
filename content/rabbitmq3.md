@@ -1,6 +1,6 @@
 title: RabbitMQ系列第三篇
 subtitle: 分布式部署
-date: 2017-01-22
+date: 2019-01-10
 category: RabbitMQ
 tags: MQ,Docker
 

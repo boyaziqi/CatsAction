@@ -1,6 +1,6 @@
 title: RabbitMQ系列第一篇
 subtitle: 基本概念和常见工作模式
-date: 2017-01-20
+date: 2019-01-05
 category: RabbitMQ
 tags: MQ
 

@@ -1,6 +1,6 @@
 title: RabbitMQ系列第二篇
 subtitle: 如何保证消息可靠性
-date: 2017-01-21
+date: 2019-01-09
 category: RabbitMQ
 tags: MQ,Go
 
