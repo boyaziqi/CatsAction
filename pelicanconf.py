@@ -57,12 +57,11 @@ RELATIVE_URLS = True
 
 LOAD_CONTENT_CACHE = False
 PYGMENTS_RST_OPTIONS = {'classprefix': 'pgcss', 'linenos': 'table'}
-DEFAULT_DATE_FORMAT = '%Y-%m-%d %A'
-# DATE_FORMATS = {"en": '%Y-%m-%d %A'}
+# DEFAULT_DATE_FORMAT = '%Y-%m-%d %A'
+DATE_FORMATS = {"en": '%Y-%m-%d'}
 
 # 以下为本网站自定义设置
 THEME = "elegant"
 # DISPLAY_PAGES_ON_MENU = True
 # DISPLAY_CATEGORIES_ON_MENU = False
 LANDING_PAGE_TITLE = "It's a wonderful world"
-foobar = "范孝大"
