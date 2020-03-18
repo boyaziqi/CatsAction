@@ -9,7 +9,7 @@ MySQL知识点很多，有人专门整理了[MySQL学习的书籍](http://mingxi
 #### 体系结构
 MySQL被设计成单进程多线程的数据库。
 
-![MyzSQL体系结构]({static}/images/mysql_ architecture.png)
+![MyzSQL体系结构]({static}/images/mysql_architecture.png)
 
 如上图，MySQL系统结构由八部分组成。
 
