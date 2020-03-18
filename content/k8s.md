@@ -1,6 +1,6 @@
 title: Kubernetes系列一
 subtitle: 原理和基本概念
-date: 2017-01-03
+date: 2019-01-24
 category: Kubernetes
 tags: k8s, docker
 
