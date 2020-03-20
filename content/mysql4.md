@@ -97,6 +97,13 @@ ALTER TABLE `user_partition` DROP PARTITION uother;
 ALTER TABLE user_partition ADD PARTITION (PARTITION u6_1 VALUES LESS THAN (120));
 ```
 
+> 如果对于已经存在的一个表，且已经有数据，需要把它变成分区表，可执行下面的命令。
+>
+> alter table user partition by range(age) (
+>    PARTITION u1 VALUES LESS THAN (6),
+>    PARTITION u2 VALUES LESS THAN (18)
+> );
+
 ##### 3: 分区表的使用
 
 分区表的使用和普通表一样，直接插入就行，查询也是。
@@ -145,6 +152,15 @@ KEY分区其实跟HASH分区差不多，不同点如下：
 4. KEY分区和HASH分区的算法不一样，PARTITION BY HASH (expr)，MOD取值的对象是expr返回的值，而PARTITION BY KEY (column_list)，基于的是列的MD5值。
 
 更多分区类型详情，请参考[分区表基本类型](http://mysql.taobao.org/monthly/2017/11/09/)
+
+## 分区表如何跨存储
+
+创建分区表时，可以分别通过`INDEX DIRECTORY`和`DATA DIRECTORY`指定分区子表数据文件和索引文件存储路径。如果路径是挂载的磁盘、RAID或者NFS，可以将数据保持到多个存储介质上。
+
+## 分表和分区表
+分表，是将一张大表拆分成多张逻辑表，用户层面看到多张表，而MySQL分区表用户层面只看到一张。对于分表，客户端应用可以根据id或其他一些条件判断读哪一张表，或者加一层代理。
+
+分表实现比较灵活，现在有Merge存储引擎支持分表操作。
 
 ----
 *后述：*
