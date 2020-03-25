@@ -6,17 +6,22 @@ tags: Redis
 
 ## 前述
 
-本篇讲述的内容主要是一些概念性的东西，彼此之间没有太多关联性，也不打算太深入，写的时候觉得是个知识点都会把它记录下来，后续会针对某些内容单独篇文章，可以关注Redis系列的其它内容。
+本篇讲述的内容主要是一些概念性的东西，彼此之间没有太多关联性，也不打算太深入，写的时候觉得是个知识点都会把它记录下来，后续会针对某些内容单独写篇文章，可以关注Redis系列的其它内容。
 
 本篇的最后，泛概讲解了下Redis常见数据类型String，List， Hash，Set，ZSet的C语言结构。相关内容参考了[Redis设计与实现](https://book.douban.com/subject/25900156/)
 
 ## Redis特点
 
 - 是一个单线程应用。
+
 - 是一个内存中的数据结构存储系统，支持丰富数据类型。
+
 - 常用作缓存，可以持久化数据到硬盘。
+
 - 支持简单的消息队列协议，可用作普通的消息队列中间件。
+
 - 内置Lua脚本支持。
+
 - 支持事务和LRU事件。
 
 ## Pub/Sub（分发和订阅）
@@ -59,7 +64,9 @@ Reading messages... (press Ctrl-C to quit)
 Pipelining即管道。使用Pipelining，我们可以一次向Redis发送多个命令请求，并一次获得请求结果。Pipelining有如下优点。
 
 - 避免单个命令发送多次阻塞。Redis每一个命令请求，Client都会阻塞等待结果。Pipelining一次向Redis Server发送多个命令，减少了阻塞次数。
+
 - 减少了网络RTT。Pipelining将请求和回复一次传输，减少了网络传输次数和总时间。
+
 - 降低了Socket IO时间。对于Redis命令，请求和产生结果相对较快，而读写IO相对较慢。一次Pipelining请求只读写一次IO，这比多个命令分开请求减少了IO读写次数。<br>
 
 
@@ -69,7 +76,9 @@ Redis提供RDB和AOF两种持久化方式。RDB持久化方式会在一个特定
 
 ###### RDB工作方式
 - Redis调用fork()，产生一个子进程。
+
 - 子进程把数据写到一个临时的RDB文件。
+
 - 当子进程写完新的RDB文件后，把旧的RDB文件替换掉。
 
 ###### RDB和AOF优缺点对比
@@ -78,28 +87,38 @@ Redis提供RDB和AOF两种持久化方式。RDB持久化方式会在一个特定
 ## 内存优化
 
 - Redis string数据结构没有采用C预约的string，而是自己设计了数据结构，保持了字符串长度和预分配空间。由于预分配空间的存在，会造成内存浪费，因此不要频繁的使用字符串append操作。
+
 - 共享内存。Redis存储整数时会共享内存。但是设置maxmemory和LRU时失效，应注意相关数据和设置的优化。
-- 编码优化。使用OBJECT encoding key查看编码方式。
+
+- 编码优化。当对象数量和体积比较小时，Redis会使用压缩列表或整数集合存储。使用OBJECT ENCODING key查看存结构。
+
 - 控制key数量。过多的key会造成内存浪费，可以将多个key整合到hash类型里，并保证value不超过hash-max-ziplist-value限制，这样可以利用ziplist编码。
+
 参考[Redis的内存优化](https://cachecloud.github.io/2017/02/16/Redis%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/)和官网[memory-optimization](https://redis.io/topics/memory-optimization)<br>
 
 ## 缓存更新策略
- 
- - key过期清除（超时剔除）策略
- - Redis的内存淘汰策略<br>
+
+- 被动删除：当读/写一个已经过期的key时，会触发惰性删除策略，直接删除掉这个过期key
+
+- 主动删除：由于惰性删除策略无法保证冷数据被及时删掉，所以Redis会定期主动淘汰一批已过期的key
+
+- 当前已用内存超过maxmemory限定时，触发主动清理策略
 
 ## 事务
 
 Redis通过MULTI、DISCARD、EXEC和WATCH四个命令来实现事务功能。Redis事务并不保证严格的事务特性，当执行错误时，并不能回滚到之前的操作。下面是Redis事务和严格事务的特性对比。
 
 - 原子性（Atomicity），Redis单个命令是原子性的，但是Redis事务并不保证原子性，因为执行发生错误它并不回滚。
+
 - 一致性（Consistency），入队错误，执行错误保证一致性。
+
 - 隔离性（Isolation），Redis是单线程，事务总是满足隔离性的。
+
 - 持久性（Durability），持久性和是内存模式还是硬盘模式有关。内存模式重启数据丢失。<br>
 
 ## 数据类型
 
-###### *string*
+##### *1: string*
 
 Redis的string类型未复用C，自定义类型SDS。类型定义如下。
 
@@ -116,7 +135,7 @@ struct sdshdr {
 - SDS的free可以减少字符串扩展和收索时的内存再分配次数，也可以用来避免数组溢出。
 - 二进制安全，不靠'\0'判断字符串是否结束，而是字符串长度。
 
-###### *list*
+##### *2: list*
 
 Redis list中每个节点是一个`listNode`结构，多个`listNode`组成一个双向链表。而list结构本身保存链表的长度，头尾指针，以及三个操作函数。
 
@@ -139,7 +158,7 @@ typedef struct list {
 
 基于list结构，读取list头尾节点元素的时间复杂度为O(1)，读取list长度的时间复杂度也是O(1)。
 
-###### *hash*
+##### *3: hash*
 
 ```C
 typedef struct dictht {
@@ -184,21 +203,26 @@ type和privdata是针对不同类型键值对，为创建多态字典而设置�
 
 ht属性包含两个`dictht`元素的数组，其中ht[1]只用字rehash（hash重构）时才使用。
 
-###### *set*
+##### *4: set*
+
+下面是整数集合的结构。如果集合包含的元素足够少，且所有成员都能表示为平台有符号范围之内的十进制整数，那么Redis会采用整数集合这种有序数组来存储集合。
 
 ```C
 typedef struct intset{
-    //编码方式
-    uint32_t enconding;
-   // 集合包含的元素数量
-    uint32_t length;
-    //保存元素的数组    
-    int8_t contents[];
+    uint32_t encoding;   //编码方式
+    uint32_t length; // 集合包含的元素数量
+    int8_t contents[]; //保存元素的数组    
 };
 ```
-整数集合是集合底层实现之一。当一个集合中只包含整数，且这个集合中的元素数量不多时，redis就会使用整数集合intset作为集合的底层实现。
 
-###### *sorted set*
+上面的intset contents虽然定义成int8类型，但它实际存储类型根据encoding而定，可能是int16，int32，int64等。
+
+对于原先所有元素都用int16表示的intset，如果新插入的元素需要int32或者int64表示，就需要对contents进行升级（重新分配更大的空间），然后将原有的元素复制到新分配的空间，再插入新元素，仍需保持intset的有序。
+
+关于更多intset升级的内容，可以查看黄健宏的《Redis设计与实现》[升级](http://redisbook.com/preview/ziplist/cascade_update.html)
+
+
+##### *5: sorted set*
 
 有序集合的底层实现是跳跃表（skiplist），是一种有序数据结构，它通过在每个节点中维持多个指向其他节点的指针，从而达到快速查找访问节点的目的。
 
@@ -246,11 +270,40 @@ typedef struct zskiplistNode{
 
 *[跳跃表](https://subetter.com/algorithm/skip-list.html)*
 
-*[《Redis设计与实现》](http://redisbook.com/index.html)*
+
+##### *6: 压缩列表（ziplist）*
+在列表，散列，有序集合长度比较短或者体积比较小时，Redis可以选择用ziplist这种紧凑结构来存储这些类型。对于大小和体积，可以通过配置项修改。下面是list使用ziplist的默认配置项，hash和zset把开头的list更换也有对应的配置。
+
+```conf
+list-max-ziplist-entries 512
+list-max-ziplist-value 512
+```
+
+**ziplist的连锁更新**
+
+下面是压缩列表每个节点元素的构成结构。
+
+```bash
+| previous_entry_length | encoding | content |
+```
+
+其中previous_entry_length存储前一个元素的长度，encoding存储当前节点元素类型和长度，content存储当前节点元素内容。
+
+对于previous_entry_length，当前一个元素长度小于254字节，需要1个字节来存储长度。当前一个元素长度大于等于254时，需要5字节来存储长度。
+
+如上所述，Redis为了节省内存，previous_entry_length所占空间长度是根据前一个元素的长度变动的。因此，当插入一个长度大于254的元素时，就可能造成当前节点的previous_entry_length空间无法存储其长度，因此需要扩展，而这样的扩展，就可能造成下一个节点的扩展，这种现象叫ziplist的连锁更新。
+
+连锁更新时间复杂度为O(N^2) ，但是触碰的几率很低。
+
+关于连锁更新更详细介绍，可以查看黄健宏的《Redis设计与实现》[连锁更新](http://redisbook.com/preview/ziplist/cascade_update.html)
+
+
+
+上面的配置中，entries项指定在ziplist下允许包含的元素最大数量，value指定ziplist下每个节点的最大体积。如果超过这个限制，Redis会将ziplist存储转换为对应类型通常的存储结构。
+
+*参考资料：*
 
 *[Redis原理](https://blog.csdn.net/u013679744/article/details/79195563)*
-
-
 
 ## 后述
 
