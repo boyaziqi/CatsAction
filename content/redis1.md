@@ -1,6 +1,6 @@
 title: Redis系列一
 subtitle: 概念和数据类型
-date: 2019-09-28
+date: 2019-09-12
 category: Redis
 tags: Redis
 
@@ -305,8 +305,45 @@ list-max-ziplist-value 512
 
 *[Redis原理](https://blog.csdn.net/u013679744/article/details/79195563)*
 
+## quiklist
+
+在用`DEBUG OBJECT`查看list和hash的encoding时，我们看到有一种存储类型是quiklist。它是zipList和linkedList（双向链表）的混合体，它将linkedList按段切分，每一段使用zipList来紧凑存储，多个zipList之间使用双向指针串接起来。
+
+下面是一个简单的quiklist示例图。
+<center>
+![quicklist]({static}/images/quiklist.png)
+</center>
+
+下面是quiklist的Redis C定义。
+
+```C
+struct quicklist {
+    quicklistNode* head;
+    quicklistNode* tail;
+    long count; // 元素总数
+    int nodes; // ziplist 节点的个数
+    int compressDepth; // LZF 算法压缩深度
+    ...
+}
+struct quicklistNode {
+    quicklistNode* prev;
+    quicklistNode* next;
+    ziplist* zl; // 指向压缩列表
+    int32 size; // ziplist 的字节总数
+    int16 count; // ziplist 中的元素数量
+    int2 encoding; // 存储形式2bit，原生字节数组还是LZF压缩存储
+    ...
+}
+```
+
+*参考资料*
+
+*[quiklist](https://www.cnblogs.com/virgosnail/p/9542470.html)*
+
 ## 后述
 
 本篇大体讲解了Redis一些常见概念和数据类型，Redis的其它系列会扩展和讲解其它知识点，下面是一些内容。
 
 *[Redis Sentinel模式]({filename}/redis_sentinel.md)*
+
+*[Redis内存淘汰机制]({filename}/redis2.md)*
