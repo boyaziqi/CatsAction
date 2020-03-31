@@ -16,8 +16,11 @@ tags: Redis,Memcached
 
 - Redis支持服务端的数据操作，而Memcached需要将数据拿到客户端修改再set回去，增加了io操作。
 
-关于Memcached和redis对比，可以参考[Memcached和Redis区别](http://www.360doc.com/content/18/0309/11/11935121_735604822.shtml)
+关于Memcached和redis对比，可以参考：
 
+[Memcached和Redis区别](http://www.360doc.com/content/18/0309/11/11935121_735604822.shtml)
+
+[]()
 
 ## 缓存的一些问题
 ##### 1，缓存穿透
@@ -59,4 +62,5 @@ tags: Redis,Memcached
 *一些资料：*
 
 [Redis技术集](https://zhuanlan.zhihu.com/p/28073983)收集了一些Redis的技术讲解和使用场景按理。
+
 [阿里云缓存架构](https://yq.aliyun.com/articles/290865)
