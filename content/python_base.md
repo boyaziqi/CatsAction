@@ -16,3 +16,9 @@ tags: Python, GC
 [async/await](https://zhuanlan.zhihu.com/p/27258289)
 
 [迭代器和生成器](https://www.cnblogs.com/51try-again/p/11074621.html)
+
+## 相关资料
+
+[微服务架构](https://www.cnblogs.com/imyalost/p/6792724.html)
+
+[微服务](https://www.cnblogs.com/wintersun/p/6219259.html)
