@@ -10,7 +10,7 @@ tags: hash,cache
 Travis CI对闭源软件不免费。后续写一篇利用buildbot+tox实现自动化测试及CI的文章。
 
 #### Python 测试包
-pytest，unitest，mock, nose, doctest, tox
+pytest，unittest，mock, nose, doctest, tox
 
 #### Python2和Python3的区别
 - string编码。Python3默认是Unicode，Python2是ASCII。
