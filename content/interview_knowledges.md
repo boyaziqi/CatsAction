@@ -204,8 +204,8 @@ asyncio：get_event_loop， run_until_complete， get_running_loop
 - threading
 - asyncio
 - urllib
-- unitest
-- unitest.mock
+- unittest
+- unittest.mock
 - sys
 - types
 - hashlib
