@@ -86,6 +86,8 @@ multi、exec、watch、unwatch、discard。
 
 Redis的事务没有回滚机制，某条语句执行错误，multi打包的事务就结束了。因此Redis事务原子性，一致性，持久性都不满足。由于Redis是单线程运行，事务可以保证隔离性。watch、unwatch命令实现类似乐观锁的机制。
 
+Redis支持非事务流水线（pipeline)，会将多个命令一次性发送给Redis，然后等待所以命令结果再返回。pipeline降低了网络延迟消耗。默认pipeline对多个命令不开启事务，不过可以通过参数调整。
+
 ## Lua脚本
 
 由于Redis事务的缺陷，Redis提供了Lua脚本来保证原子性，但是脚本会阻塞其他客户端进程执行。
