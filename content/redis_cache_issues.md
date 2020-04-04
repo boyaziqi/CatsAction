@@ -3,6 +3,9 @@ date: 2017-01-22
 category: Cache
 tags: Redis,Memcached
 
+## 前述
+本篇收集Redis一些常见问题及解决方法，最后面是一些Redis资料链接。
+
 ## Memcached和Redis的区别
 - Memcached单进程多线程，而Redis单进程单线程。处理小数据时，Redis性能比Memcached高，而在100K以上的数据中，Memcached性能要高于Redis。
 
@@ -19,8 +22,6 @@ tags: Redis,Memcached
 关于Memcached和redis对比，可以参考：
 
 [Memcached和Redis区别](http://www.360doc.com/content/18/0309/11/11935121_735604822.shtml)
-
-[]()
 
 ## 缓存的一些问题
 ##### 1，缓存穿透
@@ -59,8 +60,24 @@ tags: Redis,Memcached
 
 ---
 
+## 后述
+
 *一些资料：*
 
 [Redis技术集](https://zhuanlan.zhihu.com/p/28073983)收集了一些Redis的技术讲解和使用场景按理。
 
 [阿里云缓存架构](https://yq.aliyun.com/articles/290865)
+
+[神奇的HyperLogLog算法](http://www.rainybowe.com/blog/2017/07/13/%E7%A5%9E%E5%A5%87%E7%9A%84HyperLogLog%E7%AE%97%E6%B3%95/index.html)
+
+[Redis HyperLogLog结构](https://zhuanlan.zhihu.com/p/58358264)
+
+[Redis Bitmap结构](https://segmentfault.com/a/1190000008188655)
+
+[Redis Geo实战](https://www.jianshu.com/p/81bf3baa64e5)
+
+[GeoHash讲解](https://zhuanlan.zhihu.com/p/35940647)
+
+[GeoHash简单代码展示](https://github.com/GongDexing/Geohash)
+
+[Redis命令参考](http://doc.redisfans.com/)

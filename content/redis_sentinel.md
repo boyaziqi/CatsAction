@@ -4,7 +4,8 @@ date: 2020-01-09
 category: Redis
 tags: Redis
 
-文章最后，我会基于Docker部署Redis主从和验证Sentinel模式。相关实现已经放到我的GitHub博客源，欢迎克隆交流学习。[Docker搭建Redis主从和Sentinel](https://github.com/boyaziqi/CatsAction/tree/master/examples/redis-replication)
+## 前述
+本篇先讲解Redis主从同步原理及流程，然后讲解Sentinel工作机制。最后，基于Docker部署Redis主从和验证Sentinel模式。相关实现已经放到我的GitHub博客源，[Docker搭建Redis主从和Sentinel](https://github.com/boyaziqi/CatsAction/tree/master/examples/redis-replication)
 
 ## Redis主从同步原理
 ###### 1，增量同步
@@ -153,3 +154,7 @@ docker stop redis-replication_redisA_1
 docker restart redis-replication_redisA_1
 ```
 ps: 如果客户端与旧主服务器分隔在一起，写入的数据在恢复后由于旧主会复制新主的数据会造成数据丢失。
+
+## 后述
+
+本篇讲述了Redis的主从复制和Sentinel模式，后面会讲讲Redis集合以及Redis负载均衡的调度。
