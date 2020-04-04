@@ -1,5 +1,5 @@
-title: Redis系列一
-subtitle: 概念和数据类型
+title: Redis系列三
+subtitle: 持久化、集群、分片
 date: 2019-09-12
 category: Redis
 tags: Redis

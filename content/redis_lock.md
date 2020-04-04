@@ -1,5 +1,4 @@
-title: Redis系列之
-subtitle: 锁、信号量、事务
+title: Redis锁、信号量、事务
 date: 2018-12-12
 category: Redis
 tags: Redis
@@ -85,7 +84,16 @@ RedLock缺点就是指适用于N个独立的Redis节点，主从模式和集群�
 
 multi、exec、watch、unwatch、discard。
 
-Redis的事务没有回滚机制，只是打包执行。watch、unwatch命令实现类似乐观锁的机制。
+Redis的事务没有回滚机制，某条语句执行错误，multi打包的事务就结束了。因此Redis事务原子性，一致性，持久性都不满足。由于Redis是单线程运行，事务可以保证隔离性。watch、unwatch命令实现类似乐观锁的机制。
 
 ## Lua脚本
 
+由于Redis事务的缺陷，Redis提供了Lua脚本来保证原子性，但是脚本会阻塞其他客户端进程执行。
+
+通过`EVAL`命令执行脚本。脚本中可以通过`Redis.call`和`Redis.pcall`调用Redis命令
+
+一条简单的Redis脚本示例，传递参数应该由KEYS和ARGV指定。
+
+```Redis
+eval "return redis.call('set',KEYS[1], ARGV[1])" 1 foo bar
+```

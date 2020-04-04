@@ -81,8 +81,7 @@ Redis会为每个key对象维护一个计数器counter和最近一次计数被�
 
 需要减少counter值时，并不是总减少1。Redis会计算key对象最近一次被减少时间相对于目前时间过去了多少个lfu-decay-time，即`(now - last_dect_time) / lfu-decay-time`的值，counter即减去算出来的值。
 
-> 基于最近被减少时间，解决了如下问题：
-
+> 基于现在时间和最近一次操作时间的差值，解决了
 > 一个key一段时间访问频繁，从而counter值增加，但是后期访问频率比较低甚至不访问，如果只是简单的累加counter，那这种情况则不能很好的被清除。
 
 下面的Redis源码展示了counter计数器增加和减少的逻辑，详细代码讲解可以参考本章最后面的参考资料链接**Redis中的LFU算法**。
