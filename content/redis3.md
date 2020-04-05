@@ -1,5 +1,5 @@
 title: Redis系列三
-subtitle: 持久化、集群、分区
+subtitle: 持久化、集群、分片
 date: 2019-09-21
 status: draft 
 category: Redis

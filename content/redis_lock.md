@@ -40,12 +40,20 @@ NX选项知名在字符串不存在的时候再能设置成功，用来判断是
 Redis官方推荐RedLock算法实现，它可以避免上面的锁单节点的问题。很多主要语言都已经有开源的实现了，自己项目中直接用就行。参考[官网](https://redis.io/topics/distlock)
 和[RedLock锁](https://www.jianshu.com/p/7e47a4503b87)
 
-RedLock缺点就是指适用于N个独立的Redis节点，主从模式和集群模式并不适用。而且至少得三个节点。参考[Redis RedLock 完美的分布式锁么？](https://juejin.im/post/59f592c65188255f5c5142d2)
+RedLock缺点就是只适用于N个独立的Redis节点，主从模式和集群模式并不适用。而且至少得三个节点。参考[Redis RedLock 完美的分布式锁么？](https://juejin.im/post/59f592c65188255f5c5142d2)
 
 *其他参考资料：[Redis分布式锁](https://juejin.im/post/5cc165816fb9a03202221dd5)*
 
-思考，有人建议zookeeper实现分布式锁，可以解决主从模式对RedLock限制还有依赖系统时钟的问题吗。关于走哦keeper分布式锁，参考[zookeeper分布式锁](https://www.cnblogs.com/toov5/p/9899489.html)
+思考，如果主从复制模式，A进程在master节点获取到锁，在锁信息还没同步到slave节点时，master节点挂掉，此时slave被提升为主节点，B进程从slave节点获取锁，就造成重复获取锁，这种问题怎么解决？
+
+对这个问题，RedLock是无法解决的。因为RedLock锁不支持主从复制模式，而且依赖系统时间。思考了很久，我觉得Redis由客户端控制锁的方式是很难解决的，因为A进程和B进程之间并不知道彼此获取锁的情况。
+
+如果master节点和slave节点数据强一致，只有数据同步完成才给客户端返回获取锁成功，那上面的问题就解决了。但是这种方式影响了Redis服务对命令的响应速度，和Redis的设计思想不匹配。而且，到目前为止官方也不支持数据强一致的主从复制和集群模式。
+
+有人建议zookeeper实现分布式锁。我查阅了zookeeper相关资料，它对数据一致性的却支持的比较好，支持不同维度的数据一致性。关于zookeeper分布式锁，参考[zookeeper分布式锁](https://www.cnblogs.com/toov5/p/9899489.html)
 与[zookeeper功能](https://www.cnblogs.com/felixzh/p/5869212.html)
+
+后面也会抽空研究下zookeeper，然后再针对zookeeper写相关系列的文章。
 
 ## 信号量
 
