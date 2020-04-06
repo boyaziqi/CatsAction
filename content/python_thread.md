@@ -254,4 +254,4 @@ Python的multiprocessing库提供了如下对象支持进程间通信：`Queue`�
 
 协程是Python3.4以后的一个概念，也是异步编程的一种趋势。网上很多关于协程和线程的对比的文章，什么协程更轻更快啥的，我觉得都只是看表象说理，没有体会协程的哲理。
 
-线程和协程的区别，面试的时候经常问。我总结的协程和线程区别，也许并不全面，如果你又很好的看法，欢迎在[issue](https://github.com/boyaziqi/CatsAction/issues/15)留言。
+线程和协程的区别，面试的时候经常问。我总结的协程和线程区别，也许并不全面，如果你有很好的看法，欢迎在[issue](https://github.com/boyaziqi/CatsAction/issues/15)留言。
