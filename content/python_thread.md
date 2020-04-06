@@ -33,17 +33,25 @@ tags: Python, 线程, 进程
 
 *[Linux PCB属性](https://www.cnblogs.com/33debug/p/6705391.html)*
 
-*[Linux进程控制块](https://blog.csdn.net/wangwenwen/article/details/8879375)*
-
-*[进程的调度策略](https://blog.csdn.net/lanxinglan/article/details/41663607)*
-
 *[linux线程剖析](https://blog.csdn.net/summy_j/article/details/72722853)*
-
-*[Linux线程同步方式](https://www.cnblogs.com/yinbiao/p/11190336.html)*
 
 ## 线程和协程
 
 协程，顾名思义，就是一些协同运行的程序或者对象。线程是操作系统的概念，而协程是用户编程层面的概念。线程的调度由操作系统控制，而协程由用户自己实现的事件循环调度。**协程强调的是异步，而线程（或者进程）强调的是并发**。对于Python来说，协程只是一种语法糖，一种异步任务的包装，让程序员写同步代码的方式来写异步任务代码。
+
+## 线程安全
+
+线程安全指多线程环境下，通过一定的机制确保共享内存数据的安全，避免数据污染。常见的线程安全方式有：
+
+- 局部变量：局部变量属于线程独有，其它线程不能访问，因此不会受其它线程影响。
+
+- 针对全局变量，每个线程各复制一份，线程只修改自己的一份。比如Java里的ThreadLocal机制。这种机制变量逻辑上属于某个线程，但实际存储在线程共享内存区。
+
+- 将全局变量设置为只读。只读变量不能修改，因此多个线程不存在互相影响，数据污染的问题。
+
+- 线程同步，常见的方式有互斥锁、条件变量、读写锁、信号量。线程同步的基本思想就是把不可预测的线程调度变成有序的执行，从而让数据的改变可以预测。
+
+- CAS（check-and-set），也叫乐观锁。准确的说这种方式不能确保数据安全，只是假设数据不会被其它线程修改。线程执行的时候先检查，没被其它线程修改继续执行，被修改了就重头开始。
 
 ## 进程间通信方式
 1）管道pipe：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。
@@ -255,3 +263,13 @@ Python的multiprocessing库提供了如下对象支持进程间通信：`Queue`�
 协程是Python3.4以后的一个概念，也是异步编程的一种趋势。网上很多关于协程和线程的对比的文章，什么协程更轻更快啥的，我觉得都只是看表象说理，没有体会协程的哲理。
 
 线程和协程的区别，面试的时候经常问。我总结的协程和线程区别，也许并不全面，如果你有很好的看法，欢迎在[issue](https://github.com/boyaziqi/CatsAction/issues/15)留言。
+
+*下面是一些资料：*
+
+*[Linux进程控制块](https://blog.csdn.net/wangwenwen/article/details/8879375)*
+
+*[进程的调度策略](https://blog.csdn.net/lanxinglan/article/details/41663607)*
+
+*[Linux线程同步方式](https://www.cnblogs.com/yinbiao/p/11190336.html)*
+
+[线程安全](https://mp.weixin.qq.com/s/WDeewsvWUEBIuabvVVhweA)
