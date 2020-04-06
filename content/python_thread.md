@@ -184,7 +184,7 @@ t2 finished at 17:03:01
 
 ## Python的进程
 
-Python进程由两种实现方式。基于multiprocessing、继承Process类和进程池Pool。
+Python进程由三种实现方式：基于multiprocessing、继承Process类和进程池Pool。
 
 通过multiprocessing直接启动
 
@@ -252,6 +252,6 @@ Python的multiprocessing库提供了如下对象支持进程间通信：`Queue`�
 
 ## 后述
 
-协程是Python3.4以后的一个概念，也是异步编程的一种趋势。网上很多关于协程和线程的对比的文章，什么协程更轻更快啥的，我觉得都只是看表象说理，没有体会协程的哲理，所以我才写了这篇文章。
+协程是Python3.4以后的一个概念，也是异步编程的一种趋势。网上很多关于协程和线程的对比的文章，什么协程更轻更快啥的，我觉得都只是看表象说理，没有体会协程的哲理。
 
-线程和协程小节虽然只有短短几句话，但是都是我自己对协程的体会，我觉得是体会到协程的一些哲学点吧，也希望看到这篇文章的精英们，如果有新的体会欢迎在我的[issue](https://github.com/boyaziqi/CatsAction/issues/15)给我留言。以后使用协程有新的体会，我也会不断更新。
+线程和协程的区别，面试的时候经常问。我总结的协程和线程区别，也许并不全面，如果你又很好的看法，欢迎在[issue](https://github.com/boyaziqi/CatsAction/issues/15)留言。
