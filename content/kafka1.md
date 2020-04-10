@@ -1,5 +1,6 @@
 title: Kafka集群原理
-date: 2017-08-18
+date: 2017-03-18
+status: draft
 category: MQ
 tags: Kafka, Zookeeper
 
