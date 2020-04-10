@@ -1,5 +1,5 @@
 title: RPC知识和常见框架对比
-date: 208-08-10
+date: 2018-08-10
 category: RPC
 tags: gRPC, Thirft, Dubbo, Netty
 
@@ -29,6 +29,12 @@ RPC，即远程过程调用。它的目的是让调用远程服务向调用本�
 
 ##### Thirft
 
+[Thirft原理和使用](https://www.cnblogs.com/chenny7/p/4224720.html)
+
+[Apache Thrift](https://www.ibm.com/developerworks/cn/java/j-lo-apachethrift/index.html)
+
+Thirft传输层支持多种协议，支持文本和二进制传输。服务端支持多种模型（单线程，多线程，阻塞和非阻塞）。
+
 ##### gRPC
 
 对于gRPC，它使用的传输协议是HTTP2，序列化和反序列化协议是protobuf。gRPC有一下特点。
@@ -55,6 +61,8 @@ RPC，即远程过程调用。它的目的是让调用远程服务向调用本�
 ##### Dubbo
 
 Dubbo是阿里开源的RPC框架。
+
+[Dubbo官方文档](http://dubbo.apache.org/zh-cn/docs/user/preface/background.html)
 
 ##### HTTP2
 
