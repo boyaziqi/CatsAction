@@ -70,6 +70,8 @@ HTTP2是二进制协议，支持流控，支持数据流等特性。
 
 [http2](https://hpbn.co/http2/)
 
+[http2详解](https://juejin.im/post/5b88a4f56fb9a01a0b31a67e#heading-61)
+
 ## gRPC VS Thirft
 
 [gRPC vs Thrift](https://blog.csdn.net/dazheng/article/details/48830511)
