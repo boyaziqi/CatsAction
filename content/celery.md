@@ -13,7 +13,7 @@ Celery基于Broker传递执行任务，当tasks调用被调用时，先序列化
 
 下面是celery基本的架构。
 
-![Redis Pub/Sub模式]({static}/images/redis-pub-sub.png)
+![Redis Pub/Sub模式]({static}/images/celery.png)
 
 Broker通常是RabbitMQ和Redis
 
