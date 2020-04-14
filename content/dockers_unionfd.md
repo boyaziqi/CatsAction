@@ -15,7 +15,7 @@ Docker是时下很流行的容器技术，它用到的技术主要是Cgroup，Na
 #### Namespace
 Linux Namespace是Linux提供的一种内核级别环境隔离的方法。Namespace提供如下功能。
 
-- 把自身pid印射为0，并看不到其他任何的pid，这样自身的pid成为系统内唯一存在pid，看起来就像新启动了系统
+- 把自身pid映射为0，并看不到其他任何的pid，这样自身的pid成为系统内唯一存在pid，看起来就像新启动了系统
 - 用户名隔离，可以把用户名设置为“root”
 - hostname隔离，可以另取一个hostname，成为新启动进程的hostname
 - IPC隔离，隔离掉进程之间的互相通信

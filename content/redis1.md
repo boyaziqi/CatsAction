@@ -30,6 +30,8 @@ Publisher（生产者）不将消息发送给特定的Consumer（消费者），
 
 ![Redis Pub/Sub模式]({static}/images/redis-pub-sub.png)
 
+[GeoHash原理](https://zhuanlan.zhihu.com/p/35940647)
+
 下面是Pub/Sub最简单的使用。<br>
 首先客户端订阅了两个channel。分别是first，second。
 ```redis
